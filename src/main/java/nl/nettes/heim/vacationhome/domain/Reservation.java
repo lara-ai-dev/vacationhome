@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Reservation {
@@ -17,14 +18,29 @@ public class Reservation {
 
     private Long id;
 
+    private Integer reservationNumber;
     private String apartmentName;
     private boolean hasRoom;
-    private double price;
+    private float price;
+    private Integer noGuests;
+    private boolean payment;
+    private String billingAddress;
+    private Date checkInDate;
+    private Date checkOutDate;
+
 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("reservations")
+
     private ApplicationUser guest;
+
+    public Reservation(Date startDate, Date endDate) {
+    }
+
+    public Reservation() {
+
+    }
 
     public Long getId() {
         return id;
@@ -50,11 +66,11 @@ public class Reservation {
         this.hasRoom = hasRoom;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -66,5 +82,71 @@ public class Reservation {
         this.guest = guest;
     }
 
+    public Integer getReservationNumber() {
+        return reservationNumber;
+    }
 
+    public void setReservationNumber(Integer reservationNumber) {
+        this.reservationNumber = reservationNumber;
+    }
+
+    public Integer getNoGuests() {
+        return noGuests;
+    }
+
+    public void setNoGuests(Integer noGuests) {
+        this.noGuests = noGuests;
+    }
+
+    public boolean isPayment() {
+        return payment;
+    }
+
+    public void setPayment(boolean payment) {
+        this.payment = payment;
+    }
+
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public Date getCheckInDate() {
+        return checkInDate;
+    }
+
+    public Date setCheckInDate(Date checkInDate) {
+        return this.checkInDate = checkInDate;
+    }
+
+    public Date setCheckInDate(int year, int month, int day, int hours, int minutes) {
+        Date date = new Date();
+        date.setHours(hours);
+        date.setYear(year);
+        date.setMinutes(minutes);
+        date.setDate(day);
+        date.setMonth(month);
+        return this.checkInDate = date;
+    }
+
+    public Date getCheckOutDate() {
+        return checkOutDate;
+    }
+
+    public Date setCheckOutDate(Date checkOutDate) {
+        return this.checkOutDate = checkOutDate;
+    }
+
+    public Date setCheckOutDate(int year, int month, int day, int hours, int minutes){
+        Date date = new Date();
+        date.setHours(hours);
+        date.setYear(year);
+        date.setMinutes(minutes);
+        date.setDate(day);
+        date.setMonth(month);
+        return this.checkOutDate = date;
+    }
 }

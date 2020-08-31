@@ -1,13 +1,16 @@
 package nl.nettes.heim.vacationhome.service;
 
+import nl.nettes.heim.vacationhome.domain.Apartment;
 import nl.nettes.heim.vacationhome.exception.ReservationNotFoundException;
 import nl.nettes.heim.vacationhome.domain.Reservation;
 import nl.nettes.heim.vacationhome.persistance.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 public class ReservationService implements IReservationService {
@@ -52,5 +55,38 @@ public class ReservationService implements IReservationService {
 
         }
         throw new ReservationNotFoundException("Hello I dont exist");
+    }
+
+    public List<List> checkReservation(Date startDate, Date endDate, Apartment apartment){
+
+        List<Reservation> reservations = reservationRepository.findBetweenDates(startDate, endDate, apartment);
+        List<List> result = new ArrayList<>();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(endDate);
+        calendar.add(Calendar.DATE, 1);
+        endDate = calendar.getTime();
+
+        while (endDate.after(startDate)){
+            Boolean isAvailable = true;
+            for(Reservation reservation : reservations){
+                Date tmpResStart = reservation.getCheckInDate();
+                Date tmpResEnd = reservation.getCheckOutDate();
+                if(tmpResEnd.after(startDate) && tmpResStart.before(startDate)){
+                    isAvailable = false;
+                    break;
+                }
+            }
+            List<Object> tmpList = new ArrayList<>();
+            tmpList.add(startDate);
+            tmpList.add(isAvailable);
+            result.add(tmpList);
+            calendar = Calendar.getInstance();
+            calendar.setTime(startDate);
+            calendar.add(Calendar.DATE, 1);
+            startDate = calendar.getTime();
+        }
+        return result;
+
     }
 }

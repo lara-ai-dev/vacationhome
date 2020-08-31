@@ -1,11 +1,11 @@
 package nl.nettes.heim.vacationhome.controller;
 
-
 import nl.nettes.heim.vacationhome.domain.Reservation;
 import nl.nettes.heim.vacationhome.service.IReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,6 +19,7 @@ public class ReservationController {
     public List<Reservation> getAllReservations(){
         return reservationService.getAllReservation();
     }
+
     @GetMapping(value = "/api/reservation/{id}")
     public Reservation getReservation(@PathVariable long id){
         return reservationService.getReservationById(id);
@@ -26,7 +27,15 @@ public class ReservationController {
     }
 
     @PostMapping(value = "/api/reservation")
-    public Reservation addReservation(@RequestBody Reservation newReservation){
+    public Reservation addReservation(@RequestBody Integer reservationNumber, float price, Date checkInDate, Date checkOutDate, Integer noGuests, boolean payment, String billingAddress){
+        Reservation newReservation = new Reservation();
+        newReservation.setReservationNumber(reservationNumber);
+        newReservation.setPrice(price);
+        newReservation.setCheckInDate(checkInDate);
+        newReservation.setCheckOutDate(checkOutDate);
+        newReservation.setNoGuests(noGuests);
+        newReservation.setPayment(payment);
+        newReservation.setBillingAddress(billingAddress);
         return reservationService.addReservation(newReservation);
     }
 
@@ -40,7 +49,4 @@ public class ReservationController {
     public Reservation updateReservationById(@PathVariable long id, @RequestBody Reservation updatedReservation){
        return reservationService.updateReservationById(id, updatedReservation);
     }
-
-
-
 }
