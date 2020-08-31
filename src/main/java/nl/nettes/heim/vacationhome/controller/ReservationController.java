@@ -27,7 +27,7 @@ public class ReservationController {
     }
 
     @PostMapping(value = "/api/reservation")
-    public Reservation addReservation(@RequestBody Integer reservationNumber, float price, Date checkInDate, Date checkOutDate, Integer noGuests, boolean payment, String billingAddress){
+    public Reservation addReservation(@RequestBody Integer reservationNumber, float price, Date checkInDate, Date checkOutDate, Integer noGuests, boolean payment, String billingAddress, Integer apartmentId){
         Reservation newReservation = new Reservation();
         newReservation.setReservationNumber(reservationNumber);
         newReservation.setPrice(price);
@@ -36,6 +36,7 @@ public class ReservationController {
         newReservation.setNoGuests(noGuests);
         newReservation.setPayment(payment);
         newReservation.setBillingAddress(billingAddress);
+        newReservation.setApartmentId(apartmentId);
         return reservationService.addReservation(newReservation);
     }
 

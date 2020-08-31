@@ -19,7 +19,7 @@ public class Reservation {
     private Long id;
 
     private Integer reservationNumber;
-    private String apartmentName;
+    private Integer apartmentId;
     private boolean hasRoom;
     private float price;
     private Integer noGuests;
@@ -50,12 +50,12 @@ public class Reservation {
         this.id = id;
     }
 
-    public String getApartmentName() {
-        return apartmentName;
+    public Integer getApartmentId() {
+        return apartmentId;
     }
 
-    public void setApartmentName(String apartmentName) {
-        this.apartmentName = apartmentName;
+    public void setApartmentId(Integer apartmentName) {
+        this.apartmentId = apartmentName;
     }
 
     public boolean isHasRoom() {

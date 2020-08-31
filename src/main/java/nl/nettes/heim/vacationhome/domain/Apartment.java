@@ -10,17 +10,17 @@ public class Apartment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long apartmentId;
+    private Integer apartmentId;
 
     private int apartmentNumber;
     private int availableBeds;
     private float pricePerNight;
 
-    public Long getApartmentId() {
+    public Integer getApartmentId() {
         return apartmentId;
     }
 
-    public void setApartmentId(Long apartmentId) {
+    public void setApartmentId(Integer apartmentId) {
         this.apartmentId = apartmentId;
     }
 

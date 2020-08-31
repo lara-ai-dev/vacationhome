@@ -7,10 +7,7 @@ import nl.nettes.heim.vacationhome.persistance.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Service
 public class ReservationService implements IReservationService {
@@ -36,7 +33,7 @@ public class ReservationService implements IReservationService {
     public Reservation updateReservationById(long id, Reservation updatedReservation){
         return reservationRepository.findById(id).map(
                 reservation -> {
-                    reservation.setApartmentName(updatedReservation.getApartmentName());
+                    reservation.setApartmentId(updatedReservation.getApartmentId());
                     reservation.setPrice(updatedReservation.getPrice());
                     return reservationRepository.save(reservation);
                 })
@@ -59,7 +56,18 @@ public class ReservationService implements IReservationService {
 
     public List<List> checkReservation(Date startDate, Date endDate, Apartment apartment){
 
-        List<Reservation> reservations = reservationRepository.findBetweenDates(startDate, endDate, apartment);
+        List<Reservation> allReservations = reservationRepository.findAll();
+        List<Reservation> reservations = new ArrayList<>();
+            for(Reservation reservation : allReservations){
+                if(reservation.getApartmentId().equals(apartment.getApartmentId())){
+                    // checking the checkIn data --> if its between checkindata and checkoutdata
+                    if((reservation.getCheckInDate().after(startDate) && reservation.getCheckInDate().before(endDate)) ||
+                            (reservation.getCheckOutDate().after(startDate) && reservation.getCheckOutDate().before(endDate))){
+                            reservations.add(reservation);
+                    }
+                }
+            }
+
         List<List> result = new ArrayList<>();
 
         Calendar calendar = Calendar.getInstance();
