@@ -3,10 +3,14 @@ package nl.nettes.heim.vacationhome.service;
 import nl.nettes.heim.vacationhome.domain.ApplicationUser;
 import nl.nettes.heim.vacationhome.persistance.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+
 import java.util.List;
+import java.util.Properties;
 
 @Service
 @Validated
@@ -27,5 +31,8 @@ public class ApplicationUserService {
         };
         return null;
     }
+
+
+
 
 }

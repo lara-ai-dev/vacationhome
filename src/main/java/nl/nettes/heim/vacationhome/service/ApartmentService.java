@@ -1,6 +1,7 @@
 package nl.nettes.heim.vacationhome.service;
 
 import nl.nettes.heim.vacationhome.domain.Apartment;
+import nl.nettes.heim.vacationhome.domain.Reservation;
 import nl.nettes.heim.vacationhome.persistance.ApartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,17 +20,16 @@ public class ApartmentService  {
         return apartmentRepository.findById(id).orElse(null);
     }
 
-    public List<Apartment> chosenApartment(long id, Apartment apartment){
-         List<Apartment> apartments = new ArrayList<>();
+    public Apartment findChosenApartment(Apartment apartment){
 
-         Boolean isAvailable = false;
-         if(apartment.getApartmentId().equals(id)){
-             isAvailable = true;
+        List<Apartment> allApartments = apartmentRepository.findAll();
+         for(Apartment apartments : allApartments){
+             if(apartments.getApartmentId().equals(apartment)){
+                 return apartment;
+             }
          }
-
-        return apartments;
-
-
+        return null;
     }
+
 
 }

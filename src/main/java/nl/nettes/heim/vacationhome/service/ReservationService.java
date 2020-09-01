@@ -7,6 +7,7 @@ import nl.nettes.heim.vacationhome.persistance.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.websocket.Session;
 import java.util.*;
 
 @Service
@@ -97,4 +98,6 @@ public class ReservationService implements IReservationService {
         return result;
 
     }
+
+
 }
