@@ -17,18 +17,20 @@ public class ApplicationUserController {
     private ApplicationUserService applicationUserService;
 
     @GetMapping(value = "api/user/{id}")
-    public ApplicationUser getUserbyId(@PathVariable Long id){
+    public ApplicationUser getUserById(@PathVariable long id){
         Optional<ApplicationUser> user = applicationUserRepository.findById(id);
         return user.orElse(null);
     }
 
     //JSON bestand via postman -- database
 
-    @PostMapping(value = "api/user/")
+
+    @PostMapping(value = "api/register/")
     public ApplicationUser register(@RequestBody ApplicationUser newUser){
         return applicationUserRepository.save(newUser);
     }
 
+    /*
     @PostMapping(value = "api/register/")
     public ApplicationUser register(@RequestBody String userName, String password, String firstName, String lastName, Integer phoNo, String address, String email ){
         ApplicationUser newUser = new ApplicationUser();
@@ -40,7 +42,7 @@ public class ApplicationUserController {
         newUser.setAddress(address);
         newUser.setEmail(email);
         return applicationUserRepository.save(newUser);
-    }
+    } */
 
 
     @PostMapping(value="api/login")

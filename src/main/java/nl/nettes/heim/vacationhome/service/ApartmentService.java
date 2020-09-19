@@ -16,8 +16,8 @@ public class ApartmentService  {
     private ApartmentRepository apartmentRepository;
 
 
-    public Apartment getApartmentById(long id){
-        return apartmentRepository.findById(id).orElse(null);
+    public Apartment getApartmentId(Long apartmentId){
+        return apartmentRepository.findById(apartmentId).orElse(null);
     }
 
     public Apartment findChosenApartment(Apartment apartment){
