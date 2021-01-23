@@ -1,11 +1,8 @@
 package nl.nettes.heim.vacationhome.controller;
 
 import nl.nettes.heim.vacationhome.domain.ApplicationUser;
-import nl.nettes.heim.vacationhome.payload.LoginRequest;
-import nl.nettes.heim.vacationhome.payload.response.JwtResponse;
 import nl.nettes.heim.vacationhome.persistance.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
