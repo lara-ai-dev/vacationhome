@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+//filter that executes once per request - override dofilterinterfal method
 public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Autowired
@@ -33,15 +34,19 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         try {
+            // get JWT
             String jwt = parseJwt(request);
+            //if request has JWT - validate - parse username
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
+                // from username get userdetailss --> to create authentication object
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
+                // set current userdetails in securitycontext object
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception e) {

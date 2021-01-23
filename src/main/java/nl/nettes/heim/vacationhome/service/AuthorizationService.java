@@ -74,6 +74,8 @@ public class AuthorizationService {
      * @param signUpRequest de payload signup-request met gebruikersnaam en wachtwoord.
      * @return een HTTP response met daarin een succesbericht.
      */
+
+    //checks on existing username & email
     public ResponseEntity<MessageResponse> registerUser(@Valid SignupRequest signUpRequest) {
         if (Boolean.TRUE.equals(userRepository.existsByUsername(signUpRequest.getUsername()))) {
             return ResponseEntity
@@ -87,7 +89,7 @@ public class AuthorizationService {
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        // Create new user's account
+        // Create new user accout
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
@@ -95,11 +97,14 @@ public class AuthorizationService {
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
+        // if not specified role -- ROLE_USER
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException(ROLE_NOT_FOUND_ERROR));
             roles.add(userRole);
-        } else {
+        }
+            //else set as admin role or at default as user role
+            else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
@@ -136,20 +141,24 @@ public class AuthorizationService {
      * @param loginRequest De payload met username en password.
      * @return een HTTP-response met daarin de JWT-token.
      */
+    // authenticates username an password
     public ResponseEntity<JwtResponse> authenticateUser(@Valid LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                         loginRequest.getPassword()));
 
+        //update SecurityContext using Authentication object
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
+        // get userdetails from Authentication object
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
+        //response with JWT and UserDetails data
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
