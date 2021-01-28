@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 @Service
 @Validated
 public class AuthorizationService {
@@ -103,8 +102,8 @@ public class AuthorizationService {
                     .orElseThrow(() -> new RuntimeException(ROLE_NOT_FOUND_ERROR));
             roles.add(userRole);
         }
-            //else set as admin role or at default as user role
-            else {
+        //else set as admin role or at default as user role
+        else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":

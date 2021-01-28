@@ -11,17 +11,20 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class UserDetailsImpl implements UserDetails {
 
+public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
-    private final Long id;
-    private final String username;
-    private final String email;
+
+    private Long id;
+
+    private String username;
+
+    private String email;
 
     @JsonIgnore
-    private final String password;
+    private String password;
 
-    private final Collection<? extends GrantedAuthority> authorities;
+    private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(Long id, String username, String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
@@ -45,17 +48,17 @@ public class UserDetailsImpl implements UserDetails {
                 authorities);
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
     public Long getId() {
         return id;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
     }
 
     @Override
@@ -97,10 +100,4 @@ public class UserDetailsImpl implements UserDetails {
         UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, email, password, authorities);
-    }
 }
-

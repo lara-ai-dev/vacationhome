@@ -5,44 +5,37 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "roles")
 public class Role {
-
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.AUTO,
-            generator = "native"
-    )
-    @GenericGenerator(
-            name = "native",
-            strategy =  "native"
-    )
-    @Column(columnDefinition = "serial")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 20)
     private ERole name;
 
-    public Role(){
+    public Role() {
 
     }
 
-    public Role (ERole name){
+    public Role(ERole name) {
         this.name = name;
     }
 
-    public long getId(){
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id){
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public ERole getName(){
+    public ERole getName() {
         return name;
     }
 
-    public void setName(ERole name){
+    public void setName(ERole name) {
         this.name = name;
     }
 }

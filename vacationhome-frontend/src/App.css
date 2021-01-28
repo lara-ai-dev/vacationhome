@@ -113,7 +113,7 @@ h6 {
 }
 .nav-links {
   height: 0;
-  overflow: hidden; 
+  overflow: hidden;
   transition: var(--mainTransition);
   list-style-type: none;
 }
@@ -127,6 +127,7 @@ h6 {
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: var(--mainSpacing);
+
 }
 .nav-links a:hover {
   color: var(--primaryColor);

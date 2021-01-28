@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import nl.nettes.heim.vacationhome.service.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 
+
 @Component
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
@@ -55,5 +56,4 @@ public class JwtUtils {
 
         return false;
     }
-
 }
