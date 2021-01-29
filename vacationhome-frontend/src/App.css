@@ -139,7 +139,7 @@ h6 {
 }
 
 .show-nav {
-  height: 220px;
+  height: 270px;
 }
 @media screen and (min-width: 768px) {
   .nav-btn {
@@ -585,3 +585,9 @@ label {
   text-align: center;
 }
 /* end of personal information container*/
+
+/* reservation information container */
+.reservationinformation{
+  padding: 5rem 0;
+}
+/* end of reservation information container */
