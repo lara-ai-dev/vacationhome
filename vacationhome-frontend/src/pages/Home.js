@@ -29,11 +29,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="container">
-                <header className="jumbotron">
-                    <h3>{content}</h3>
-                </header>
-            </div>
+
         <Hero >
             <Banner title="luxurious rooms" subtitle="deluxe rooms starting at $299">
             <Link to="/rooms" className="btn-primary">

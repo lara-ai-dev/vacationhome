@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import logo from '../images/logo.svg';
+import NH_Logo from '../images/NH-Logo.png';
 import {FaAlignRight} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 
@@ -49,7 +49,7 @@ export default class Navbar extends Component {
             <div className="nav-center">
             <div className="nav-header">
             <Link to="/">
-                <img src={logo} alt="vacationhome"/>
+                <img src={NH_Logo}  alt="vacationhome" className="NH_Logo"/>
             </Link>
             <button type="button" className="nav-btn" onClick={this.handleToggle}>
                 <FaAlignRight className="nav-icon"/>
@@ -66,6 +66,7 @@ export default class Navbar extends Component {
                 </li>
 
 
+
                 {showAdminBoard && (
                     <li>
                         <Link to={"/admin"}>
@@ -74,13 +75,6 @@ export default class Navbar extends Component {
                     </li>
                 )}
 
-                {currentUser && (
-                    <li>
-                        <Link to={"/user"}>
-                            User
-                        </Link>
-                    </li>
-                )}
 
 
                 {currentUser ? (
@@ -92,7 +86,7 @@ export default class Navbar extends Component {
                         </li>
                         <li>
                             <a href="/login"  onClick={this.logOut}>
-                                LogOut
+                                Logout
                             </a>
                         </li>
                     </>

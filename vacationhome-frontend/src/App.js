@@ -5,8 +5,7 @@ import Home from './pages/Home';
 import Rooms from './pages/Rooms';
 import SingleRoom from './pages/SingleRoom';
 import Error from './pages/Error';
-import "bootstrap/dist/css/bootstrap.min.css";
-import AuthService from "./services/auth.service";
+
 
 import Login from "./components-auth/Login";
 import Register from "./components-auth/Register";

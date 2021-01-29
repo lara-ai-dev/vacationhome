@@ -1,32 +1,35 @@
 import React from "react";
 import AuthService from '../services/auth.service';
+import Title from "../components/Title";
 
 // gets User from local storage with token (user details)
 const Profile = () => {
     const currentUser = AuthService.getCurrentUser();
 
     return (
-        <div className="container">
-            <header className="jumbotron">
+        <div>
+        <div className="personalinformation">
+        <Title title="Personal information"/>
+        <div className="container-personalinformation">
+            <header className="header-personalinformation">
                 <h3>
                     <strong>{currentUser.username}</strong> Profile
                 </h3>
             </header>
             <p>
-                <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
-                {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-            </p>
-            <p>
-                <strong>Id:</strong> {currentUser.id}
+                <strong>Username:</strong> {currentUser.username}
             </p>
             <p>
                 <strong>Email:</strong> {currentUser.email}
             </p>
-            <strong>Authorities:</strong>
+            <p><strong>Authorities:</strong></p>
             <ul>
                 {currentUser.roles &&
                 currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
             </ul>
+
+        </div>
+        </div>
         </div>
     );
 };

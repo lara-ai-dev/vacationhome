@@ -20,7 +20,7 @@ body {
   padding-top: 66px;
   color: var(--mainBlack);
   background: var(--mainWhite);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Futura;
   line-height: 1.4;
 }
 h1 {
@@ -100,6 +100,11 @@ h6 {
 .nav-header {
   display: flex;
   justify-content: space-between;
+}
+
+.nav-header .NH_Logo {
+  max-width: 40%;
+  height: auto;
 }
 .nav-btn {
   background: transparent;
@@ -514,6 +519,7 @@ h6 {
 }
 /* end of rooms fitler*/
 
+/* log in & sign up */
 label {
   display: block;
   margin-top: 10px;
@@ -546,3 +552,36 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+/* end of log in & sign up */
+
+/* personal information container */
+
+.personalinformation{
+  padding: 5rem 0;
+}
+.container-personalinformation{
+  width: 80%;
+  position: center;
+  margin-left:auto;
+  margin-right: auto;
+  height: auto;
+  padding-bottom: 20px;
+  left: 251px;
+  top: 336px;
+
+  background: #C4C4C4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-personalinformation p {
+  padding-left: 20px;
+                                }
+.container-personalinformation ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+.header-personalinformation{
+  padding: 2rem 0;
+  text-align: center;
+}
+/* end of personal information container*/
