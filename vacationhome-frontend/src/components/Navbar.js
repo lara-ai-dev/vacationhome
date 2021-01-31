@@ -70,7 +70,7 @@ export default class Navbar extends Component {
                 {showAdminBoard && (
                     <li>
                         <Link to={"/admin"}>
-                            Admin Board
+                            Reservations
                         </Link>
                     </li>
                 )}

@@ -28,6 +28,8 @@ public class Reservation {
     private Date checkInDate;
     private Date checkOutDate;
 
+    private String email;
+
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -148,5 +150,13 @@ public class Reservation {
         date.setDate(day);
         date.setMonth(month);
         return this.checkOutDate = date;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

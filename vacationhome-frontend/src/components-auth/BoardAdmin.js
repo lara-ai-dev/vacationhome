@@ -48,22 +48,24 @@ export default class BoardAdmin extends Component {
 
     }
 
+    deleteReservation(id, e){
+        axios.delete(`/reservation/${id}`)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+                const reservations = this.state.reservations.filter(item => item.id !== id);
+                this.setState({reservations});
+            })
+    }
+
     render() {
         const {reservations} = this.state;
         return (
             <div className="reservationinformation">
                 <Title title="Reservation information"/>
             <div className="container-reservationinformation">
-                <header className="jumbotron">
-                    <h3>{this.state.content}</h3>
-                </header>
-                <ul>
-                    {this.state.reservations.map((reservation =>
-                            <li>{reservation.price}</li>
-                    ))}
 
-
-                </ul>
             </div>
 
                 <Table striped bordered hover>
@@ -81,7 +83,13 @@ export default class BoardAdmin extends Component {
                         return (
                             <tr key={reservation.id}>
                                 <td>{reservation.id}</td>
+                                <td>{reservation.email}</td>
+                                <td>{reservation.checkInDate}</td>
+                                <td>{reservation.checkOutDate}</td>
                                 <td>{reservation.price}</td>
+                                <td>
+                                    <button className="btn btn-danger" onClick={(e) => this.deleteReservation(reservation.id, e)}>Delete</button>
+                                </td>
                             </tr>
                         )
                     })}
