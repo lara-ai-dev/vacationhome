@@ -13,6 +13,7 @@ export default class Navbar extends Component {
 
         this.state = {
             showAdminBoard: false,
+            showUserBoard: false,
             currentUser: undefined,
         };
     }
@@ -24,6 +25,7 @@ export default class Navbar extends Component {
             this.setState({
                 currentUser: user,
                 showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+                showUserBoard: user.roles.includes("ROLE_USER")
             });
         }
     }
@@ -42,7 +44,8 @@ export default class Navbar extends Component {
     }
 
     render() {
-        const {currentUser, showAdminBoard} = this.state;
+        const {currentUser, showAdminBoard, showUserBoard} = this.state;
+
 
         return (
             <nav className="navbar">
@@ -71,6 +74,14 @@ export default class Navbar extends Component {
                     <li>
                         <Link to={"/admin"}>
                             Reservations
+                        </Link>
+                    </li>
+                )}
+
+                {showUserBoard && (
+                    <li>
+                        <Link to={"/user"}>
+                            Overview
                         </Link>
                     </li>
                 )}

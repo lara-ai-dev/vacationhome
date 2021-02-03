@@ -8,9 +8,13 @@ import nl.nettes.heim.vacationhome.persistance.ApplicationUserRepository;
 import nl.nettes.heim.vacationhome.persistance.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public class ReviewService  {
@@ -69,6 +73,20 @@ public class ReviewService  {
                 });
     }
 
+    public Review store(MultipartFile file) throws IOException{
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        Review Review = new Review (fileName, file.getContentType(), file.getBytes());
+
+        return reviewRepository.save(Review);
+    }
+
+    public Review getFile(Long reviewId){
+        return reviewRepository.findById(reviewId).get();
+    }
+
+    public Stream<Review> getAllFiles(){
+        return reviewRepository.findAll().stream();
+    }
 
 }
 

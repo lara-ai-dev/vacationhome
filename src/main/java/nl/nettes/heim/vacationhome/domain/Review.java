@@ -1,9 +1,6 @@
 package nl.nettes.heim.vacationhome.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Review {
@@ -18,6 +15,13 @@ public class Review {
 
     private Long userId;
     private String userName;
+    private String fileName;
+    private String type;
+    private String reviewId;
+
+    public Review() {
+
+    }
 
 
     public long getCommentId() {
@@ -52,5 +56,43 @@ public class Review {
     public Review setUserName(String userName) {
         this.userName = userName;
         return this;
+    }
+
+
+    @Lob
+    private byte[] data;
+
+
+    public Review(String fileName, String type, byte[] data){
+        this.fileName = fileName;
+        this.type = type;
+        this.data = data;
+    }
+    public String getFilename() {
+        return fileName;
+    }
+
+    public void setFilename(String filename) {
+        this.fileName = filename;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public String getReviewId() {
+        return reviewId;
     }
 }
