@@ -613,3 +613,10 @@ label {
 }
 
 /* end of map information container */
+
+/* review container */
+.review-container Title{
+  padding: 5rem 0;
+}
+
+/* end of review container */

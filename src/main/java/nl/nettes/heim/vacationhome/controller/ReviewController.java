@@ -65,7 +65,7 @@ public class ReviewController {
 
     @PostMapping(value = "/review")
     public Review addReview(@RequestBody Review newReview){
-        return reviewService.addReview(newReview,newReview.getUserId());
+        return reviewService.addReview(newReview);
     }
 
 

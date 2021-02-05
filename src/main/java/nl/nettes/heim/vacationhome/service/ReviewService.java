@@ -40,15 +40,16 @@ public class ReviewService  {
         return reviewRepository.save(newReview);
     } */
 
-    public Review addReview(Review newReview, Long userId){
+    public Review addReview(Review newReview){
 
+        /*
         List<ApplicationUser> applicationUsers = applicationUserRepository.findAll();
         for(ApplicationUser applicationUser : applicationUsers) {
             if (applicationUser.getUserId().equals(userId)) {
                 newReview.setUserName(applicationUser.getUserName());
             }
 
-        } return reviewRepository.save(newReview);
+        } */ return reviewRepository.save(newReview);
     }
 
     public String deleteReviewById(long commentId){

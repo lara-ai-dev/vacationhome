@@ -13,11 +13,12 @@ public class Review {
 
     private String comment;
 
-    private Long userId;
+    //private Long userId;
     private String userName;
     private String fileName;
     private String type;
     private String reviewId;
+    private int rating;
 
     public Review() {
 
@@ -40,14 +41,14 @@ public class Review {
         this.comment = comment;
     }
 
-    public long getUserId() {
+    /*public long getUserId() {
         return userId;
     }
 
     public Review setUserId(Long userId) {
         this.userId = userId;
         return this;
-    }
+    }*/
 
     public String getUserName() {
         return userName;
@@ -58,6 +59,13 @@ public class Review {
         return this;
     }
 
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     @Lob
     private byte[] data;
