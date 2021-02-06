@@ -6,6 +6,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import AuthService from "../services/auth.service";
 import '../App.css';
 
+
 export default class BoardUser extends Component {
     constructor(props) {
         super(props);
@@ -115,7 +116,7 @@ export default class BoardUser extends Component {
                 <label class="col-md-3 control-label" for="message">Review</label>
 
 
-                <div class="col-md-9">
+                <div class="container-review-textbox">
                     <textarea
                         class="form-control"
                         id="comment"
@@ -131,15 +132,15 @@ export default class BoardUser extends Component {
 
             <div className="form-group">
                 <label class="col-md-3 control-label" for="message">Your rating</label>
-                <StarRatingComponent
+                <p><StarRatingComponent
                     name="rate1"
                     starCount={5}
                     value={rating}
                     onStarClick={this.onStarClick.bind(this)}
-                />
+                /></p>
             </div>
 
-                <button onSubmit="submit">Add</button>
+                <button className="btn btn-primary btn-block" onSubmit="submit">Add</button>
 
 
             </form>

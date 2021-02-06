@@ -595,7 +595,7 @@ label {
 /* map information container */
 .container-maps{
   overflow: hidden;
-  padding-bottom: 56%;
+
   position: relative;
 
 }
@@ -615,8 +615,71 @@ label {
 /* end of map information container */
 
 /* review container */
-.review-container Title{
-  padding: 5rem 0;
+.container-review-textbox{
+  text-align: center;
+  width: 800px;
+  margin-left: auto;
+  margin-right:auto;
 }
+
+.form-group label{
+  padding: 2rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.form-group p{
+  text-align: center;
+}
+
+.form-group btn btn-primary btn-block{
+  width: 50%;
+}
+
+.container-reviews Title{
+  padding: 5rem 0;
+  margin-top: 10px;
+}
+
+.reviewitem-container{
+  margin-top:80px;
+  height: fit-content;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.reviewitem-container-information{
+  height: auto;
+  width: 100%;
+  background-color: #fff;
+}
+
+.reviewitem-username{
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-style: italic;
+}
+
+.reviewitem-comment{
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  margin-bottom: 10px;
+}
+
+.reviewitem-rating{
+  text-align:center;
+}
+
 
 /* end of review container */
