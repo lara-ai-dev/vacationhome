@@ -9,10 +9,12 @@ import java.util.List;
 
 public interface IReservationService  {
     List<Reservation> getAllReservation();
+    List<List> checkReservation(Date checkInDate, Date checkOutDate, Apartment apartment);
     Reservation getReservationById(long id);
     Reservation addReservation(Reservation newReservation);
     Reservation updateReservationById(long id, Reservation updatedReservation);
     String deleteReservationById(long id);
+
 
 
 

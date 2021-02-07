@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -18,8 +21,8 @@ public class Reservation {
 
     private Long id;
 
-    private Integer reservationNumber;
-    private Integer apartmentId;
+    private Integer reservationId;
+    private Long apartmentId;
     private boolean hasRoom;
     private float price;
     private Integer noGuests;
@@ -27,8 +30,6 @@ public class Reservation {
     private String billingAddress;
     private Date checkInDate;
     private Date checkOutDate;
-
-    private String email;
 
 
 
@@ -39,6 +40,7 @@ public class Reservation {
 
     public Reservation(Date startDate, Date endDate) {
     }
+
 
     public Reservation() {
 
@@ -52,11 +54,11 @@ public class Reservation {
         this.id = id;
     }
 
-    public Integer getApartmentId() {
+    public Long getApartmentId() {
         return apartmentId;
     }
 
-    public void setApartmentId(Integer apartmentName) {
+    public void setApartmentId(Long apartmentName) {
         this.apartmentId = apartmentName;
     }
 
@@ -84,12 +86,12 @@ public class Reservation {
         this.guest = guest;
     }
 
-    public Integer getReservationNumber() {
-        return reservationNumber;
+    public Integer getReservationId() {
+        return reservationId;
     }
 
-    public void setReservationNumber(Integer reservationNumber) {
-        this.reservationNumber = reservationNumber;
+    public void setReservationId(Integer reservationNumber) {
+        this.reservationId = reservationNumber;
     }
 
     public Integer getNoGuests() {
@@ -124,13 +126,9 @@ public class Reservation {
         return this.checkInDate = checkInDate;
     }
 
-    public Date setCheckInDate(int year, int month, int day, int hours, int minutes) {
-        Date date = new Date();
-        date.setHours(hours);
-        date.setYear(year);
-        date.setMinutes(minutes);
-        date.setDate(day);
-        date.setMonth(month);
+    public Date setCheckInDate(int year, int month, int day, int hours, int minutes) throws ParseException {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(""+year+"-"+month+"-"+day);
         return this.checkInDate = date;
     }
 
@@ -142,21 +140,9 @@ public class Reservation {
         return this.checkOutDate = checkOutDate;
     }
 
-    public Date setCheckOutDate(int year, int month, int day, int hours, int minutes){
-        Date date = new Date();
-        date.setHours(hours);
-        date.setYear(year);
-        date.setMinutes(minutes);
-        date.setDate(day);
-        date.setMonth(month);
+    public Date setCheckOutDate(int year, int month, int day, int hours, int minutes) throws ParseException {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(""+year+"-"+month+"-"+day);
         return this.checkOutDate = date;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

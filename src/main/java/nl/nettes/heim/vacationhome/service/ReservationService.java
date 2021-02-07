@@ -7,7 +7,6 @@ import nl.nettes.heim.vacationhome.persistance.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.websocket.Session;
 import java.util.*;
 
 @Service
@@ -55,19 +54,25 @@ public class ReservationService implements IReservationService {
         throw new ReservationNotFoundException("Hello I dont exist");
     }
 
+    @Override
     public List<List> checkReservation(Date startDate, Date endDate, Apartment apartment){
 
         List<Reservation> allReservations = reservationRepository.findAll();
         List<Reservation> reservations = new ArrayList<>();
-            for(Reservation reservation : allReservations){
-                if(reservation.getApartmentId().equals(apartment.getApartmentId())){
-                    // checking the checkIn data --> if its between checkindata and checkoutdata
-                    if((reservation.getCheckInDate().after(startDate) && reservation.getCheckInDate().before(endDate)) ||
-                            (reservation.getCheckOutDate().after(startDate) && reservation.getCheckOutDate().before(endDate))){
-                            reservations.add(reservation);
-                    }
+        for(Reservation reservation : allReservations){
+            if(reservation.getApartmentId().equals(apartment.getApartmentId())){
+                System.out.println(reservation.getCheckInDate());
+                System.out.println(reservation.getCheckOutDate());
+                // checking the checkIn data --> if its between checkindata and checkoutdate
+                if((reservation.getCheckInDate().after(startDate) && reservation.getCheckOutDate().before(endDate)) ||
+                        (reservation.getCheckInDate().before(startDate) && reservation.getCheckOutDate().after(endDate))
+                        ||  (reservation.getCheckInDate().before(startDate) && reservation.getCheckOutDate().before(endDate) && reservation.getCheckOutDate().after(startDate)) ||
+                        (reservation.getCheckInDate().after(startDate) && reservation.getCheckOutDate().after(endDate) && reservation.getCheckInDate().before(endDate))
+                ){
+                    reservations.add(reservation);
                 }
             }
+        }
 
         List<List> result = new ArrayList<>();
 
@@ -98,6 +103,56 @@ public class ReservationService implements IReservationService {
         return result;
 
     }
+
+    public boolean checkAvailability (Apartment apartment,Date startDate, Date endDate){
+
+        List<List> result = checkReservation(startDate, endDate, apartment);
+        Boolean available = true;
+        for (List<Object> list : result){
+            if(list.get(1).equals(false)){
+                available = false;
+            }
+        }
+        return available;
+    }
+
+    public List<List> getReservedDates(List<Date> reservedDates, Apartment apartment){
+
+
+        List<Reservation> allReservations = reservationRepository.findAll();
+        List<List> reservations = new ArrayList<>();
+        for( Reservation reservation : allReservations){
+
+            Date startdate = reservation.getCheckInDate();
+            Date enddate = reservation.getCheckOutDate();
+            Long apartmentId = reservation.getApartmentId();
+            getDaysBetweenDates(startdate, enddate);
+            reservations.add(reservedDates);
+        }
+
+        return reservations;
+
+    }
+
+
+    public static List<Date> getDaysBetweenDates(Date startdate, Date enddate)
+    {
+        List<Date> dates = new ArrayList<Date>();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(startdate);
+
+        while (calendar.getTime().before(enddate))
+        {
+            Date result = calendar.getTime();
+            dates.add(result);
+            calendar.add(Calendar.DATE, 1);
+        }
+        return dates;
+    }
+
+
+
+
 
 
 }
