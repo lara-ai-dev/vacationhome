@@ -30,6 +30,8 @@ public class Reservation {
     private String billingAddress;
     private Date checkInDate;
     private Date checkOutDate;
+    private Integer reservationNumber;
+    private String email;
 
 
 
@@ -144,5 +146,21 @@ public class Reservation {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = format.parse(""+year+"-"+month+"-"+day);
         return this.checkOutDate = date;
+    }
+
+    public Integer getReservationNumber() {
+        return reservationNumber;
+    }
+
+    public void setReservationNumber(Integer reservationNumber) {
+        this.reservationNumber = reservationNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -10,7 +10,7 @@ import img3 from "./images/room-3.jpeg";
 export default [
   {
     sys: {
-      id: "1"
+      id: 1
     },
     fields: {
       name: "single economy",
@@ -64,7 +64,7 @@ export default [
   },
   {
     sys: {
-      id: "2"
+      id: 2
     },
     fields: {
       name: "single basic",
@@ -118,7 +118,7 @@ export default [
   },
   {
     sys: {
-      id: "3"
+      id: 3
     },
     fields: {
       name: "single standard",

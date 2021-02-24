@@ -48,8 +48,7 @@ public class ApartmentController {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date startDate = format.parse(String.valueOf(jsonObject.getString("startDate")));
         Date endDate = format.parse(String.valueOf(jsonObject.getString("endDate")));
-        Integer numberOfBeds =  Integer.parseInt(String.valueOf(jsonObject.getString("numberOfBeds")));
-        return apartmentService.getAvailableApartments(numberOfBeds, startDate, endDate);
+        return apartmentService.getAvailableApartments(startDate, endDate);
     }
 
 }

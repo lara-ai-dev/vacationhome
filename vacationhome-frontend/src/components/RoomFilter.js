@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react'
-import { RoomContext } from '../context';
+import { RoomContext } from '../context'
 import Title from '../components/Title';
 import DatepickerSearch from "./Datepickersearch";
 
@@ -22,6 +22,8 @@ export default function RoomFilter({rooms}) {
         maxPrice,
 
     } = context;
+
+
 
     //get unique types of room - checking for 'type'
     let types = getUnique(rooms, 'type');
@@ -75,7 +77,8 @@ export default function RoomFilter({rooms}) {
                 {/* end room price*/}
                 {/* room date picker*/}
                 <div className="form-group">
-                   <DatepickerSearch/>
+                    <DatepickerSearch
+                    />
                 </div>
                 {/* end date picker*/}
 

@@ -47,7 +47,7 @@ public class ApartmentService  {
 
 
 
-    public List<Apartment> getAvailableApartments(Integer requestedBeds, Date startDate, Date endDate){
+    public List<Apartment> getAvailableApartments(Date startDate, Date endDate){
 
         List<Apartment> allApartments = apartmentRepository.findAll();
 
@@ -55,19 +55,19 @@ public class ApartmentService  {
         //going through all apartments
         for(Apartment apartment : allApartments){
 
-            if(apartment.getAvailableBeds() >= requestedBeds){
+
                 if(reservationService.checkAvailability(apartment, startDate, endDate)){
                     availableApartments.add(apartment);
                     //System.out.println(availableApartments);
                 }
-            }
+
         }
 
         return availableApartments;
 
 
     }
-
+/*
     public List<Apartment> getAllAvailableApartments(Integer requestedBeds, Date startDate, Date endDate){
         List<Apartment> allApartments =  getAvailableApartments( requestedBeds,  startDate,endDate );
         List<Apartment> allAvailableApartments = new ArrayList<>();
@@ -79,7 +79,7 @@ public class ApartmentService  {
 
         return allAvailableApartments;
 
-    }
+    }*/
 
 
 }

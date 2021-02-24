@@ -55,13 +55,13 @@ public class ApartmentTests {
         Date endDate = format.parse("2020-11-05");
         Integer numberOfBeds = 2;
 
-        for(Apartment apartment : (apartmentService.getAvailableApartments(numberOfBeds,startDate,endDate))){
+       for(Apartment apartment : (apartmentService.getAvailableApartments(startDate,endDate))){
             System.out.println(apartment.getApartmentId());
         };
-
+/*
         for(Apartment apartment : (apartmentService.getAllAvailableApartments(numberOfBeds,startDate,endDate))){
             System.out.println(apartment.getApartmentId());
-        };
+        };*/
 
 
     }
