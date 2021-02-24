@@ -9,6 +9,9 @@ const getUnique = (items, value) =>{
     // set only accepts unique values
     return [...new Set(items.map(item => item[value]))]
 }
+const getAvailableApartments = (availableApartments) =>{
+    return [ availableApartments]
+}
 
 export default function RoomFilter({rooms}) {
     const context = useContext(RoomContext)
@@ -20,6 +23,7 @@ export default function RoomFilter({rooms}) {
         price,
         minPrice,
         maxPrice,
+        availableApartments,
 
     } = context;
 
@@ -39,6 +43,10 @@ export default function RoomFilter({rooms}) {
     people  = people.map((item, index) => {
         return <option key={index} value={item}>{item}</option>
     })
+
+    //get available apartments
+    let availableApartmentsList = getAvailableApartments(availableApartments);
+
     return (
         <section className="filter-container">
             <Title title="search rooms" />
@@ -78,6 +86,7 @@ export default function RoomFilter({rooms}) {
                 {/* room date picker*/}
                 <div className="form-group">
                     <DatepickerSearch
+
                     />
                 </div>
                 {/* end date picker*/}

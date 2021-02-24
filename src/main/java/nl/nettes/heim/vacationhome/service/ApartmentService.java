@@ -58,7 +58,7 @@ public class ApartmentService  {
 
                 if(reservationService.checkAvailability(apartment, startDate, endDate)){
                     availableApartments.add(apartment);
-                    //System.out.println(availableApartments);
+                    System.out.println(availableApartments);
                 }
 
         }

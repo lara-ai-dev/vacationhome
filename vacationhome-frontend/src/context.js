@@ -33,8 +33,6 @@ class RoomProvider extends Component {
             let images = this.formatImages(Items);
             console.log(images);
 
-
-
             const featuredRooms = rooms.filter(data => data.featured === true);
             console.log(featuredRooms);
             let maxPrice = Math.max(...rooms.map(data => data.price));
@@ -45,7 +43,8 @@ class RoomProvider extends Component {
                 featuredRooms,
                 loading: false,
                 price: maxPrice,
-                maxPrice
+                maxPrice,
+
             });
 
         } catch(error){

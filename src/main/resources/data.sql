@@ -11,7 +11,7 @@ INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 
 
 INSERT INTO "reservation" (id, apartment_id, billing_address, check_in_date, check_out_date, has_room, no_guests, payment, price, reservation_number, email)
-VALUES (1, 1, 'meranerstrasse', '2021-01-01','2021-01-03', true, 12, true, 12.9, 1234,'admin@vacationhome.com');
+VALUES (1, 1, 'meranerstrasse', '2021-03-01','2021-03-03', true, 12, true, 12.9, 1234,'admin@vacationhome.com');
 /*INSERT INTO "reservation" (id, apartment_id, billing_address, check_in_date, check_out_date, has_room, no_guests, payment, price, reservation_number, email)
 VALUES (2, 1, 'meranerstrasse', '2021-06-22 19:10:25-07','2016-06-22 19:10:25-07', true, 12, true, 12.9, 1234,'admin@vacationhome.com');
 */
