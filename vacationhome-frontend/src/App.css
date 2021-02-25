@@ -17,40 +17,46 @@
 }
 /* globals */
 body {
-  padding-top: 66px;
+  padding-top: 0px;
   color: var(--mainBlack);
   background: var(--mainWhite);
-  font-family: Futura;
+  font-family: quasimoda, sans-serif;
   line-height: 1.4;
 }
 h1 {
   font-size: 3em;
   line-height: 1;
   margin-bottom: 0.5em;
+  font-family: quasimoda, sans-serif;
 }
 h2 {
   font-size: 2em;
   margin-bottom: 0.75em;
+  font-family: quasimoda, sans-serif;
 }
 h3 {
   font-size: 1.5em;
   line-height: 1;
   margin-bottom: 1em;
+  font-family: quasimoda, sans-serif;
 }
 h4 {
   font-size: 1.2em;
   line-height: 1.25;
   margin-bottom: 1.25em;
+  font-family: quasimoda, sans-serif;
 }
 h5 {
   font-size: 1em;
   font-weight: bold;
   margin-bottom: 1.5em;
+  font-family: quasimoda, sans-serif;
 }
 h6 {
   font-size: 1em;
   font-weight: bold;
   margin-bottom: 1.5em;
+  font-family: quasimoda, sans-serif;
 }
 
 .btn-primary {
@@ -121,6 +127,7 @@ h6 {
   overflow: hidden;
   transition: var(--mainTransition);
   list-style-type: none;
+
 }
 .nav-links a {
   display: block;
@@ -133,9 +140,11 @@ h6 {
   font-weight: 600;
   letter-spacing: var(--mainSpacing);
 
+
 }
 .nav-links a:hover {
   color: var(--primaryColor);
+  text-decoration: none;
 }
 
 .show-nav {
@@ -307,6 +316,7 @@ h6 {
 .room {
   box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
+  height: 95%;
 }
 .room:hover {
   box-shadow: var(--darkShadow);
@@ -344,6 +354,7 @@ h6 {
   left: 50%;
   transform: scale(0);
   transition: all 0.3s linear;
+
 }
 .img-container:hover {
   background: rgba(0, 0, 0, 0.8);
@@ -356,6 +367,7 @@ h6 {
 }
 .img-container:hover .room-link {
   transform: translate(-50%, -50%) scale(1);
+  text-decoration: none;
 }
 .room-info {
   background: var(--darkGrey);
