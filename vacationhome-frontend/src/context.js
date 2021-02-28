@@ -30,7 +30,7 @@ class RoomProvider extends Component {
             let rooms = this.formatData(response.data);
             console.log(rooms);
 
-            let images = this.formatImages(Items);
+            //let images = this.formatImages(Items);
             //console.log(images);
 
             const featuredRooms = rooms.filter(data => data.featured === true);
@@ -39,7 +39,7 @@ class RoomProvider extends Component {
 
             this.setState({
                 rooms,
-                images,
+                //images,
                 featuredRooms,
                 loading: false,
                 price: maxPrice,

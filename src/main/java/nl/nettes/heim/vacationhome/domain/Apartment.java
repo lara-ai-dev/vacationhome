@@ -15,7 +15,7 @@ public class Apartment {
     private Long apartmentId;
     private int apartmentNumber;
     private int availableBeds;
-    private float pricePerNight;
+
     private String name;
     private String slug;
     private String type;
@@ -49,13 +49,6 @@ public class Apartment {
         this.availableBeds = availableBeds;
     }
 
-    public float getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public void setPricePerNight(float pricePerNight) {
-        this.pricePerNight = pricePerNight;
-    }
 
 
     public String getName() {
