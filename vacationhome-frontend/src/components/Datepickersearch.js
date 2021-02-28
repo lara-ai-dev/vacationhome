@@ -1,15 +1,14 @@
 import React, { Component, useState, useEffect} from 'react'
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import {DateRangePicker} from "react-date-range";
 import DatePicker from "react-datepicker";
 import {Button} from "@material-ui/core";
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import Room from './Room';
 
-function DatepickerSearch() {
+
+function DatepickerSearch(props) {
 
     const [startDate, setStartDate] = useState(new Date());
     const history = useHistory();
@@ -37,7 +36,7 @@ function DatepickerSearch() {
             console.log("endDate: ", endDate);
             console.log("availableApartments", availableApartments)
 
-
+            //axios post startdate and enddate --> returns apartments which are free the selected dates (-function is in the backend)
             axios
                 .post(`/availableapartments`, {
                     startDate,
@@ -86,8 +85,7 @@ function DatepickerSearch() {
                     return (
 
                         <div className="datepickersearch--availableapartments-container-card">
-                            <li>
-                                <p>{apartment.apartmentNumber}</p>
+                            <li>{apartment.apartmentNumber}
                             </li>
                         </div>
                     )

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import UserService from "../services/user.service";
 import Title from "../components/Title";
@@ -19,7 +19,7 @@ export default class BoardAdmin extends Component {
     }
 
     componentDidMount() {
-
+        //only accessible for the admin
         UserService.getAdminBoard().then(
             response => {
                 this.setState({
@@ -38,6 +38,7 @@ export default class BoardAdmin extends Component {
             }
         );
 
+        //get all reservations
         axios.get(`/reservation`)
             .then(res => {
 
@@ -48,7 +49,8 @@ export default class BoardAdmin extends Component {
 
     }
 
-    deleteReservation(id, e){
+    // delete specific reservations
+    deleteReservation(id, e) {
         axios.delete(`/reservation/${id}`)
             .then(res => {
                 console.log(res);
@@ -64,9 +66,9 @@ export default class BoardAdmin extends Component {
         return (
             <div className="reservationinformation">
                 <Title title="Reservation information"/>
-            <div className="container-reservationinformation">
+                <div className="container-reservationinformation">
 
-            </div>
+                </div>
 
                 <Table striped bordered hover>
                     <thead>
@@ -88,7 +90,9 @@ export default class BoardAdmin extends Component {
                                 <td>{reservation.checkOutDate}</td>
                                 <td>{reservation.price}</td>
                                 <td>
-                                    <button className="btn btn-danger" onClick={(e) => this.deleteReservation(reservation.id, e)}>Delete</button>
+                                    <button className="btn btn-danger"
+                                            onClick={(e) => this.deleteReservation(reservation.id, e)}>Delete
+                                    </button>
                                 </td>
                             </tr>
                         )

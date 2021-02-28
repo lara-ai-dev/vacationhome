@@ -12,38 +12,35 @@ import Register from "./components-auth/Register";
 import Profile from "./components-auth/Profile";
 import BoardAdmin from "./components-auth/BoardAdmin";
 import BoardUser from "./components-auth/BoardUser";
-import { Route, Switch, Link } from "react-router-dom";
-
+import {Route, Switch, Link} from "react-router-dom";
 import Navbar from './components/Navbar';
 
 function App() {
 
 
+    return (
+        <>
+            <Navbar/>
+            <div>
 
-  return (
+                <Switch>
+                    <Route path="/user" component={BoardUser}/>
+                    <Route path="/admin" component={BoardAdmin}/>
 
-    <>
-    <Navbar/>
-    <div>
+                    <Route exact path={["/", "home"]} component={Home}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/register" component={Register}/>
+                    <Route exact path="/profile" component={Profile}/>
 
-    <Switch>
-
-    <Route exact path ={["/","home"]} component={Home}/>
-    <Route exact path="/login" component={Login} />
-    <Route exact path="/register" component={Register} />
-    <Route exact path="/profile" component={Profile} />
-    <Route path="/user" component={BoardUser} />
-    <Route path="/admin" component={BoardAdmin} />
-    <Route exact path ="/rooms/" component={Rooms}/>
-    <Route exact path ="/rooms/:slug" component={SingleRoom}/>
-    <Route component={Error}/>
-
-    </Switch>
-    </div>
-    </>
+                    <Route exact path="/rooms/" component={Rooms}/>
+                    <Route exact path="/rooms/:slug" component={SingleRoom}/>
+                    <Route component={Error}/>
+                </Switch>
+            </div>
+        </>
 
 
-  );
+    );
 }
 
 export default App;

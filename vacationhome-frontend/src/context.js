@@ -55,11 +55,11 @@ class RoomProvider extends Component {
         this.getData();
     }
 
-   formatImages(images){
+    formatImages(images){
         let tempImages = images.map((images) =>{
             let image = images.fields.images.map(image =>
                 image.fields.file.url);
-           // let id = image.map(rooms => rooms.apartmentId );
+            // let id = image.map(rooms => rooms.apartmentId );
             console.log(image);
             let room = {...images, image}
             return room;

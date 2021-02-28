@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import NH_Logo from '../images/NH-Logo.png';
 import {FaAlignRight} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
@@ -7,7 +7,7 @@ import AuthService from "../services/auth.service";
 
 export default class Navbar extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.logOut = this.logOut.bind(this);
 
@@ -19,8 +19,9 @@ export default class Navbar extends Component {
     }
 
     componentDidMount() {
-        const user  = AuthService.getCurrentUser();
+        const user = AuthService.getCurrentUser();
 
+        //changes on user roles
         if (user) {
             this.setState({
                 currentUser: user,
@@ -30,17 +31,17 @@ export default class Navbar extends Component {
         }
     }
 
-    logOut(){
+    logOut() {
         AuthService.logout();
     }
 
-    state ={
+    state = {
         isOpen: false
     }
 
     //toggling in between the false 
     handleToggle = () => {
-        this.setState({isOpen:!this.state.isOpen})
+        this.setState({isOpen: !this.state.isOpen})
     }
 
     render() {
@@ -49,77 +50,75 @@ export default class Navbar extends Component {
 
         return (
             <nav className="navbar">
-            <div className="nav-center">
-            <div className="nav-header">
-            <Link to="/">
-                <img src={NH_Logo}  alt="vacationhome" className="NH_Logo"/>
-            </Link>
-            <button type="button" className="nav-btn" onClick={this.handleToggle}>
-                <FaAlignRight className="nav-icon"/>
-
-            </button>
-            </div>
-            
-            <ul className={this.state.isOpen?"nav-links show-nav" : "nav-links"}>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/rooms">Rooms</Link>
-                </li>
-
-
-
-                {showAdminBoard && (
-                    <li>
-                        <Link to={"/admin"}>
-                            Reservations
+                <div className="nav-center">
+                    <div className="nav-header">
+                        <Link to="/">
+                            <img src={NH_Logo} alt="vacationhome" className="NH_Logo"/>
                         </Link>
-                    </li>
-                )}
+                        <button type="button" className="nav-btn" onClick={this.handleToggle}>
+                            <FaAlignRight className="nav-icon"/>
 
-                {showUserBoard && (
-                    <li>
-                        <Link to={"/user"}>
-                            Overview
-                        </Link>
-                    </li>
-                )}
+                        </button>
+                    </div>
 
-
-
-                {currentUser ? (
-                    <>
+                    <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
                         <li>
-                            <Link to={"/profile"} >
-                                {currentUser.username}
-                            </Link>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <a href="/login"  onClick={this.logOut}>
-                                Logout
-                            </a>
-                        </li>
-                    </>
-                ) : (
-                    <>
-                        <li>
-                            <Link to={"/login"}>
-                                Login
-                            </Link>
+                            <Link to="/rooms">Rooms</Link>
                         </li>
 
-                        <li>
-                            <Link to={"/register"}>
-                                Sign Up
-                            </Link>
-                        </li>
-                    </>
-                )}
+
+                        {showAdminBoard && (
+                            <li>
+                                <Link to={"/admin"}>
+                                    Reservations
+                                </Link>
+                            </li>
+                        )}
+
+                        {showUserBoard && (
+                            <li>
+                                <Link to={"/user"}>
+                                    Review
+                                </Link>
+                            </li>
+                        )}
 
 
-            </ul>
-            </div>
+                        {currentUser ? (
+                            <>
+                                <li>
+                                    <Link to={"/profile"}>
+                                        {currentUser.username}
+                                    </Link>
+                                </li>
+                                <li>
+                                    <a href="/login" onClick={this.logOut}>
+                                        Logout
+                                    </a>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link to={"/login"}>
+                                        Login
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to={"/register"}>
+                                        Sign Up
+                                    </Link>
+                                </li>
+                            </>
+                        )}
+
+
+                    </ul>
+                </div>
             </nav>
 
         )

@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Banner({children, title, subtitle}) {
+//Banner for each page
+function Banner({children, title}) {
     return (
         <div className="banner">
             <h1>{title}</h1>
             <div/>
-            <p>{subtitle}</p>
             {children}
         </div>
     )

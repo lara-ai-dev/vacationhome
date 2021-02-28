@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -6,13 +6,13 @@ import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
 //verify username and password as a required field
 const required = (value) => {
-    if(!value){
-    return(
-    <div className="alert alert-danger" role="alert">
-    This field is required
-    </div>
+    if (!value) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                This field is required
+            </div>
 
-    );
+        );
 
     }
 };
@@ -46,8 +46,8 @@ const Login = (props) => {
         form.current.validateAll();
 
         // If the verification is successful -> call AuthService.login() method -> direct user to profile picture or error page
-        if(checkBtn.current.context._errors.length === 0){
-            AuthService.login(username,password).then(
+        if (checkBtn.current.context._errors.length === 0) {
+            AuthService.login(username, password).then(
                 () => {
                     props.history.push("/profile");
                     window.location.reload();
@@ -55,8 +55,8 @@ const Login = (props) => {
                 (error) => {
                     const resMessage =
                         (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
+                            error.response.data &&
+                            error.response.data.message) ||
                         error.message ||
                         error.toString();
 
@@ -69,14 +69,10 @@ const Login = (props) => {
         }
     };
 
-    return(
+    return (
         <div className="col-md-12">
             <div className="card card-container">
-                <img
-                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                alt="profile-img"
-                className="profile-img-card"
-                />
+
 
                 <Form onSubmit={handleLogin} ref={form}>
                     <div className="form-group">
@@ -118,7 +114,7 @@ const Login = (props) => {
                             </div>
                         </div>
                     )}
-                    <CheckButton style={{ display: "none"}} ref={checkBtn}/>
+                    <CheckButton style={{display: "none"}} ref={checkBtn}/>
                 </Form>
             </div>
         </div>

@@ -6,6 +6,7 @@ import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
 
+//alert for this field is empty
 const required = value => {
     if (!value) {
         return (
@@ -16,6 +17,7 @@ const required = value => {
     }
 };
 
+// checks the value of the email - usage of isEmai from validator to verify email
 const email = value => {
     if (!isEmail(value)) {
         return (
@@ -26,16 +28,18 @@ const email = value => {
     }
 };
 
+// function for username which needs to be longer than 5 characters but not longer than 25
 const vusername = value => {
-    if (value.length < 3 || value.length > 20) {
+    if (value.length < 5 || value.length > 25) {
         return (
             <div className="alert alert-danger" role="alert">
-                The username must be between 3 and 20 characters.
+                The username must be between 5 and 25 characters.
             </div>
         );
     }
 };
 
+// function for password which needs to be longer than 6 characters but not longer than 40
 const vpassword = value => {
     if (value.length < 6 || value.length > 40) {
         return (
@@ -89,8 +93,10 @@ export default class Register extends Component {
             successful: false
         });
 
+        //validateAll() method to check validation functions in validations
         this.form.validateAll();
 
+        //checkbutton aids to verify the form
         if (this.checkBtn.context._errors.length === 0) {
             AuthService.register(
                 this.state.username,
@@ -124,11 +130,6 @@ export default class Register extends Component {
         return (
             <div className="col-md-12">
                 <div className="card card-container">
-                    <img
-                        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                        alt="profile-img"
-                        className="profile-img-card"
-                    />
 
                     <Form
                         onSubmit={this.handleRegister}

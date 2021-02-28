@@ -3,6 +3,8 @@ import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import {Link} from 'react-router-dom';
 
+
+// Error site for wrong urls
 function Error() {
     return (
         <Hero>

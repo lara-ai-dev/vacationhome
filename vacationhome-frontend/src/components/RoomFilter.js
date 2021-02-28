@@ -1,16 +1,16 @@
 import React from 'react'
-import { useContext } from 'react'
-import { RoomContext } from '../context'
+import {useContext} from 'react'
+import {RoomContext} from '../context'
 import Title from '../components/Title';
 import DatepickerSearch from "./Datepickersearch";
 
 //get all unique values
-const getUnique = (items, value) =>{
+const getUnique = (items, value) => {
     // set only accepts unique values
     return [...new Set(items.map(item => item[value]))]
 }
-const getAvailableApartments = (availableApartments) =>{
-    return [ availableApartments]
+const getAvailableApartments = (availableApartments) => {
+    return [availableApartments]
 }
 
 export default function RoomFilter({rooms}) {
@@ -28,7 +28,6 @@ export default function RoomFilter({rooms}) {
     } = context;
 
 
-
     //get unique types of room - checking for 'type'
     let types = getUnique(rooms, 'type');
     //add all
@@ -40,16 +39,19 @@ export default function RoomFilter({rooms}) {
 
     //get people
     let people = getUnique(rooms, 'capacity');
-    people  = people.map((item, index) => {
+    people = people.map((item, index) => {
         return <option key={index} value={item}>{item}</option>
     })
 
-    //get available apartments
-    let availableApartmentsList = getAvailableApartments(availableApartments);
+    //get apartmentIds
+    let id = getUnique(rooms, 'id');
+    id = id.map((item, index) => {
+        return <option key={index} value={item}>{item}</option>
+    })
 
     return (
         <section className="filter-container">
-            <Title title="search rooms" />
+            <Title title="search rooms"/>
             <form className="filter-form">
                 {/*select type*/}
                 <div className="form-group">
@@ -80,7 +82,8 @@ export default function RoomFilter({rooms}) {
                     <label htmlFor="price">
                         room price ${price}
                     </label>
-                    <input type="range" name="price" min={minPrice} max={maxPrice} id="price" value={price} onChange={handleChange} className="form-control"/>
+                    <input type="range" name="price" min={minPrice} max={maxPrice} id="price" value={price}
+                           onChange={handleChange} className="form-control"/>
                 </div>
                 {/* end room price*/}
                 {/* room date picker*/}

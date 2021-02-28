@@ -1,7 +1,9 @@
 import axios from "axios";
 
+// uses HTTP requests & local storage for user information & JWT
 const API_URL = "http://localhost:8080/api/auth/";
 
+// post username, email and password
 const register = (username, email, password) => {
     return axios.post(API_URL + "signup", {
         username,
@@ -10,6 +12,7 @@ const register = (username, email, password) => {
     });
 };
 
+// post username & password - saves JWT to local storage
 const login = (username, password) => {
     return axios
         .post(API_URL + "signin", {
@@ -25,10 +28,12 @@ const login = (username, password) => {
         });
 };
 
+// removes JWT from local storage
 const logout = () => {
     localStorage.removeItem("user");
 };
 
+//get stored user information (JWT)
 const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem("user"));
 };
