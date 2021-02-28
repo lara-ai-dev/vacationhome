@@ -44,7 +44,6 @@ public class ReservationTests {
         Date startDate = format.parse("2020-11-02");
         Date endDate = format.parse("2020-11-05");
 
-        System.out.println("HELLO");
 
         System.out.println(reservationService.checkReservation(startDate,endDate,apartment));
 
