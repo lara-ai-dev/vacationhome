@@ -34,3 +34,17 @@ Install Date Picker
 ##Step 07
 Install Star Rating
 ####`npm i stars-rating`
+
+
+##When running the application as an Admin 
+ONLY FOR TESTING PURPOSES, add the following JSON :
+
+```
+{
+"username" : "admin",
+"email" : "admin@admin.com",
+"password" : "123456",
+"role" : ["admin"]
+}
+```
+ 

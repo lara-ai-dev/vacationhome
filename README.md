@@ -71,3 +71,16 @@ VALUES (1, 1, 'testreservation', '2021-03-01','2021-03-03', true, 12, true, 12.9
 ```
 
 
+##When running the application as an Admin
+ONLY FOR TESTING PURPOSES, add the following JSON :
+
+```
+{
+"username" : "admin",
+"email" : "admin@admin.com",
+"password" : "123456",
+"role" : ["admin"]
+}
+```
+
+

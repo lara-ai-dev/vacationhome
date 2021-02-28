@@ -7,6 +7,7 @@ INSERT INTO "apartment" (apartment_id, apartment_number,available_beds,capacity,
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 
+
 /*Example reservation*/
 INSERT INTO "reservation" (id, apartment_id, billing_address, check_in_date, check_out_date, has_room, no_guests, payment, price, reservation_number, email)
 VALUES (1, 1, 'testreservation', '2021-03-01','2021-03-03', true, 12, true, 12.9, 1234,'admin@vacationhome.com');
