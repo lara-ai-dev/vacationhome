@@ -62,7 +62,6 @@ public class ReservationTests {
         Reservation savedReservation1= reservationService.addReservation(reservation);
 
 
-        System.out.println("HELLO");
         System.out.println(reservation.getCheckInDate());
 
 

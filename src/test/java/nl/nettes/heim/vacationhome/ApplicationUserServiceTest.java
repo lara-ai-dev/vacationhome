@@ -22,14 +22,14 @@ public class ApplicationUserServiceTest {
     @Test
     void registerTest(){
         ApplicationUser newUser = new ApplicationUser();
-        newUser.setFirstName("Lara").setLastName("Nettesheim");
-        newUser.setUserName("koyuki");
-        newUser.setPassword("geileBraut69");
+        newUser.setFirstName("TestFirstname").setLastName("TestLastname");
+        newUser.setUserName("TestUsername");
+        newUser.setPassword("Test123");
         newUser.setPhoNo(0);
-        newUser.setEmail("thaibraut@nettesheim.com");
-        newUser.setAddress("hier");
-        ApplicationUser savedUser = applicationUserController.register("koyuki","geileBraut69","Lara",
-                "Nettesheim",0,"hier","thaibraut@nettesheim.com");
+        newUser.setEmail("test123@gmail.com");
+        newUser.setAddress("hereadress");
+        ApplicationUser savedUser = applicationUserController.register("TestUsername","Test123","TestFirstname",
+                "TestLastname",0,"test123@gmail.com");
         ApplicationUser savedUser2 = applicationUserController.register(newUser);
         assertEquals(newUser.getUserName(),savedUser.getUserName());
         assertEquals(newUser,savedUser2);
@@ -38,6 +38,6 @@ public class ApplicationUserServiceTest {
     }
     @Test
     void signInTest() {
-        applicationUserService.signIn("Peter","abcd");
+        applicationUserService.signIn("test2","123456");
     }*/
 }
