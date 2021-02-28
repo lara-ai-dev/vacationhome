@@ -6,17 +6,13 @@ import PropTypes from 'prop-types';
 
 export default function Room({room}) {
     //destructure room
-    const {name, slug, price, image} = room;
+    const {name, slug, image} = room;
 
 
     return (
         <article className="room">
             <div className="img-container">
                 <img src={image[0] || defaultImg} alt="single-room"/>
-                <div className="price-top">
-                    <h6>${price}</h6>
-                    <p>per night</p>
-                </div>
                 <Link to={`/rooms/${slug}`} className="btn-primary room-link">Features</Link>
             </div>
             <p className="room-info">{name}</p>
@@ -30,7 +26,5 @@ Room.propTypes = {
         name: PropTypes.string.isRequired,
         slug: PropTypes.string.isRequired,
         images: PropTypes.arrayOf(PropTypes.string).isRequired,
-        price: PropTypes.number.isRequired,
-
     })
 }

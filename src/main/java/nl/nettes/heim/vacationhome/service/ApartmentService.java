@@ -67,19 +67,8 @@ public class ApartmentService  {
 
 
     }
-/*
-    public List<Apartment> getAllAvailableApartments(Integer requestedBeds, Date startDate, Date endDate){
-        List<Apartment> allApartments =  getAvailableApartments( requestedBeds,  startDate,endDate );
-        List<Apartment> allAvailableApartments = new ArrayList<>();
 
-        for(Apartment apartments : allApartments){
-            System.out.println(apartments.getApartmentId());
-            allAvailableApartments.add(apartments);
-        }
 
-        return allAvailableApartments;
-
-    }*/
 
 
 }

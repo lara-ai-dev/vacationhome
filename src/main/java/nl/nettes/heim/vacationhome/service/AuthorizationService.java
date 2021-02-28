@@ -65,14 +65,6 @@ public class AuthorizationService {
         this.jwtUtils = jwtUtils;
     }
 
-    /**
-     *
-     * Deze methode verwerkt de gebruiker die wil registreren. De username en e-mail worden gecheckt. Eventuele rollen
-     * worden toegevoegd en de gebruiker wordt opgeslagen in de database.
-     *
-     * @param signUpRequest de payload signup-request met gebruikersnaam en wachtwoord.
-     * @return een HTTP response met daarin een succesbericht.
-     */
 
     //checks on existing username & email
     public ResponseEntity<MessageResponse> registerUser(@Valid SignupRequest signUpRequest) {
@@ -128,18 +120,8 @@ public class AuthorizationService {
     }
 
     /**
-     * Deze methode controleert de ontvangen username en wachtwoord. Het gebruikt hiervoor de
-     * AuthenticationManager. I.a.w. Spring security doet die allemaal voor ons.
-     *
-     * Wanneer de gebruikersnaam/wachtwoord combinatie niet klopt, wordt er een Runtime exception gegooid:
-     * 401 Unauthorized. Deze wordt gegooid door
-     * {@link nl.nettes.heim.vacationhome.service.security.jwt.AuthEntryPointJwt}
-     *
-     *
-     *
-     * @param loginRequest De payload met username en password.
-     * @return een HTTP-response met daarin de JWT-token.
-     */
+     * {@link nl.nettes.heim.vacationhome.service.security.jwt.AuthEntryPointJwt}**/
+
     // authenticates username an password
     public ResponseEntity<JwtResponse> authenticateUser(@Valid LoginRequest loginRequest) {
 

@@ -31,7 +31,7 @@ class RoomProvider extends Component {
             console.log(rooms);
 
             let images = this.formatImages(Items);
-            console.log(images);
+            //console.log(images);
 
             const featuredRooms = rooms.filter(data => data.featured === true);
             console.log(featuredRooms);

@@ -18,7 +18,6 @@ export default function RoomFilter({rooms}) {
     //value from my inputs
     const {
         handleChange,
-        type,
         capacity,
         price,
         minPrice,
@@ -27,15 +26,6 @@ export default function RoomFilter({rooms}) {
 
     } = context;
 
-
-    //get unique types of room - checking for 'type'
-    let types = getUnique(rooms, 'type');
-    //add all
-    types = ['all', ...types];
-    //map to jsx
-    types = types.map((item, index) => {
-        return <option value={item} key={index}>{item}</option>
-    })
 
     //get people
     let people = getUnique(rooms, 'capacity');
@@ -53,18 +43,7 @@ export default function RoomFilter({rooms}) {
         <section className="filter-container">
             <Title title="search rooms"/>
             <form className="filter-form">
-                {/*select type*/}
-                <div className="form-group">
-                    <label htmlFor="type">room type</label>
-                    <select
-                        name="type"
-                        id="type" value={type}
-                        className="form-control"
-                        onChange={handleChange}>
-                        {types}
-                    </select>
-                </div>
-                {/* end select type*/}
+
                 {/*guests*/}
                 <div className="form-group">
                     <label htmlFor="capacity">Guests</label>
@@ -89,7 +68,6 @@ export default function RoomFilter({rooms}) {
                 {/* room date picker*/}
                 <div className="form-group">
                     <DatepickerSearch
-
                     />
                 </div>
                 {/* end date picker*/}

@@ -48,20 +48,6 @@ public class ReviewController {
         Optional<Review> review = reviewRepository.findById(commentId);
         return review.orElse(null);
     }
-/*
-    @PostMapping(value = "/review")
-    public Review addReview(@RequestBody long commentId, String comment, ApplicationUser applicationUser){
-        Review newReview = new Review();
-        newReview.setCommentId(commentId);
-        newReview.setComment(comment, applicationUser);
-        return reviewService.addReview(newReview);
-    } */
-
-    /*
-    @PostMapping(value = "/review")
-    public Review addReview(@RequestBody Review newReview){
-        return reviewService.addReview(newReview);
-    }*/
 
     @PostMapping(value = "/review")
     public Review addReview(@RequestBody Review newReview){

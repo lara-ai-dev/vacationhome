@@ -60,10 +60,12 @@ public class ReservationService implements IReservationService {
         List<Reservation> allReservations = reservationRepository.findAll();
         List<Reservation> reservations = new ArrayList<>();
         for(Reservation reservation : allReservations){
+
+            //check apartmentIds
             if(reservation.getApartmentId().equals(apartment.getApartmentId())){
                 System.out.println(reservation.getCheckInDate());
                 System.out.println(reservation.getCheckOutDate());
-                // checking the checkIn data --> if its between checkindata and checkoutdate
+                // checking the checkIn & checkout  data --> if its between checkindata and checkoutdate
                 if((reservation.getCheckInDate().after(startDate) && reservation.getCheckOutDate().before(endDate)) ||
                         (reservation.getCheckInDate().before(startDate) && reservation.getCheckOutDate().after(endDate))
                         ||  (reservation.getCheckInDate().before(startDate) && reservation.getCheckOutDate().before(endDate) && reservation.getCheckOutDate().after(startDate)) ||
@@ -81,6 +83,7 @@ public class ReservationService implements IReservationService {
         calendar.add(Calendar.DATE, 1);
         endDate = calendar.getTime();
 
+        //enddate should always start after startdate
         while (endDate.after(startDate)){
             Boolean isAvailable = true;
             for(Reservation reservation : reservations){
@@ -91,6 +94,7 @@ public class ReservationService implements IReservationService {
                     break;
                 }
             }
+
             List<Object> tmpList = new ArrayList<>();
             tmpList.add(startDate);
             tmpList.add(isAvailable);
@@ -117,7 +121,6 @@ public class ReservationService implements IReservationService {
     }
 
     public List<List> getReservedDates(List<Date> reservedDates, Apartment apartment){
-
 
         List<Reservation> allReservations = reservationRepository.findAll();
         List<List> reservations = new ArrayList<>();

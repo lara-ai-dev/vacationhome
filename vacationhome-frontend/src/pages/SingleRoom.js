@@ -45,10 +45,11 @@ export default class SingleRoom extends Component {
                 <StyledHero img={this.defaultBcg}>
                     <Banner title={`${name} room`}>
                         <Link to='/rooms' className='btn-primary'>
-                            Back to rooms
+                            BACK TO ROOMS
                         </Link>
+
                         <Link to='/register' className='btn-primary'>
-                            Book Room
+                            BOOK ROOM
                         </Link>
                     </Banner>
                 </StyledHero>

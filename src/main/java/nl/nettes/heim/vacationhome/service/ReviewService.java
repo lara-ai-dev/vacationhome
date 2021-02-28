@@ -35,21 +35,8 @@ public class ReviewService  {
         return reviewRepository.findById(commentId).orElse(null);
     }
 
-    /*
     public Review addReview(Review newReview){
         return reviewRepository.save(newReview);
-    } */
-
-    public Review addReview(Review newReview){
-
-        /*
-        List<ApplicationUser> applicationUsers = applicationUserRepository.findAll();
-        for(ApplicationUser applicationUser : applicationUsers) {
-            if (applicationUser.getUserId().equals(userId)) {
-                newReview.setUserName(applicationUser.getUserName());
-            }
-
-        } */ return reviewRepository.save(newReview);
     }
 
     public String deleteReviewById(long commentId){
@@ -74,6 +61,7 @@ public class ReviewService  {
                 });
     }
 
+    //store file
     public Review store(MultipartFile file) throws IOException{
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Review Review = new Review (fileName, file.getContentType(), file.getBytes());

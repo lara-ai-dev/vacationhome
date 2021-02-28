@@ -22,28 +22,10 @@ public class ApplicationUserController {
         return user.orElse(null);
     }
 
-    //JSON bestand via postman -- database
-
-
     @PostMapping(value = "api/register/")
     public ApplicationUser register(@RequestBody ApplicationUser newUser){
         return applicationUserRepository.save(newUser);
     }
-
-    /*
-    @PostMapping(value = "api/register/")
-    public ApplicationUser register(@RequestBody String userName, String password, String firstName, String lastName, Integer phoNo, String address, String email ){
-        ApplicationUser newUser = new ApplicationUser();
-        newUser.setUserName(userName);
-        newUser.setPassword(password);
-        newUser.setFirstName(firstName);
-        newUser.setLastName(lastName);
-        newUser.setPhoNo(phoNo);
-        newUser.setAddress(address);
-        newUser.setEmail(email);
-        return applicationUserRepository.save(newUser);
-    } */
-
 
     @PostMapping(value="api/login")
     public ApplicationUser signIn(@RequestBody String name, String password){
