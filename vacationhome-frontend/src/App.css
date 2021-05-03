@@ -63,7 +63,7 @@ h6 {
   display: inline-block;
   text-decoration: none;
   letter-spacing: var(--mainSpacing);
-  color: var(--mainBlack);
+  color: var(--mainGrey);
   background: var(--primaryColor);
   padding: 0.4rem 0.9rem;
   border: 3px solid var(--primaryColor);
@@ -73,6 +73,7 @@ h6 {
 .btn-primary:hover {
   background: transparent;
   color: var(--primaryColor);
+  text-decoration: none;
 }
 .loading {
   text-transform: capitalize;
@@ -631,8 +632,9 @@ label {
   text-align: center;
 }
 
-.form-group btn btn-primary btn-block{
-  width: 50%;
+.form-group btn-primary{
+  margin-left: 100px;
+
 }
 
 .form-uploadimage{
@@ -854,3 +856,54 @@ h1 {
   }
 }
 /* end of card item*/
+
+/*start reservation table */
+
+
+table {
+  border-collapse: collapse;
+}
+table,th,td{
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+tr:hover {background-color: #f5f5f5;}
+
+/*end reservation table */
+
+/* make reservation */
+.form-control {
+  width: 70%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+}
+
+div .form-control{
+  border-radius: 5px;
+  background-color: lightgrey;
+  padding: 20px;
+}
+
+.form-control [type=submit] {
+  width: 100%;
+  background-color: dodgerblue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit] .form-control :hover {
+  background-color: #45a049;
+}
+
+/* end make reservation*/

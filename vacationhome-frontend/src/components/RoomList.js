@@ -1,7 +1,9 @@
-import React from 'react'
-import Room from './Room'
+import React from 'react';
+import Room from './Room';
+import DateRangePicker from './Datepickersearch';
 
 export default function RoomList({rooms}) {
+
 
     if(rooms.length === 0){
         return(
@@ -10,6 +12,7 @@ export default function RoomList({rooms}) {
             </div>
         )
     }
+
     return (
         <section className="roomslist">
         <div className="roomslist-center">

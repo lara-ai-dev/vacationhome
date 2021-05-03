@@ -56,7 +56,7 @@ public class ApartmentTests {
         Integer numberOfBeds = 2;
 
        for(Apartment apartment : (apartmentService.getAvailableApartments(startDate,endDate))){
-            System.out.println(apartment.getApartmentId());
+            //System.out.println(apartment.getApartmentId());
         };
 /*
         for(Apartment apartment : (apartmentService.getAllAvailableApartments(numberOfBeds,startDate,endDate))){

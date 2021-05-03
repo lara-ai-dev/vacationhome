@@ -5,8 +5,8 @@ import Title from "../components/Title";
 import StarRatingComponent from 'react-star-rating-component';
 import AuthService from "../services/auth.service";
 import '../App.css';
-import {ProgressBar} from "react-bootstrap";
-
+//import {ProgressBar} from "react-bootstrap";
+import { Line, Circle } from 'rc-progress';
 
 export default class BoardUser extends Component {
     constructor(props) {
@@ -148,10 +148,10 @@ export default class BoardUser extends Component {
                             <input type="file" onChange={this.fileSelectedHandler}/>
                             <button onClick={this.fileUploadHandler}>Upload</button>
                             <div className="uploadimage-progress">
-                                <ProgressBar animated now={this.state.progress} label={`${this.state.progress}% `}/>
+                                <Line percent={this.state.progress}label={`${this.state.progress}% `}/>
                             </div>
                         </div>
-                        <button className="btn btn-primary btn-block" onSubmit="submit">Add</button>
+                        <button className="btn btn-primary btn-block" onSubmit="submit">Submit</button>
                     </div>
 
                 </form>

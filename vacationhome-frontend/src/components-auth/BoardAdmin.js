@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import UserService from "../services/user.service";
 import Title from "../components/Title";
-import Table from 'react-bootstrap/Table'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default class BoardAdmin extends Component {
     constructor(props) {
@@ -70,7 +69,7 @@ export default class BoardAdmin extends Component {
 
                 </div>
 
-                <Table striped bordered hover>
+                <table striped bordered hover>
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -99,7 +98,7 @@ export default class BoardAdmin extends Component {
                     })}
 
                     </tbody>
-                </Table>
+                </table>
 
             </div>
         );
