@@ -76,7 +76,8 @@ function DatepickerSearch(props) {
                 {availableApartments && availableApartments.map((apartment) =>  {
                     return (
                         <div className="datepickersearch--availableapartments-container-card">
-                            <li>{apartment.apartmentNumber}
+                            <li>
+                                {availableApartments.toString()}
                             </li>
                         </div>
                     )

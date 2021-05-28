@@ -42,7 +42,7 @@ public class ApartmentController {
         return apartment.orElse(null);
     }
 
-    @PostMapping(value = "api/availableapartments")
+    @GetMapping(value = "api/availableapartments")
     public List<Apartment> getAvailableApartments(@RequestBody String request)throws JSONException, ParseException {
         JSONObject jsonObject = new JSONObject(request);
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");

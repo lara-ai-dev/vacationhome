@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { Component, useState, useEffect} from 'react'
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import {DateRangePicker, isInclusivelyBeforeDay} from "react-dates";
+import moment from "moment";
+import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import {useContext} from 'react'
 import {RoomContext} from '../context'
 import Title from '../components/Title';
-import DatepickerSearch from "./Datepickersearch";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 
 //get all unique values
+
 const getUnique = (items, value) => {
     // set only accepts unique values
     return [...new Set(items.map(item => item[value]))]
@@ -13,21 +22,48 @@ const getAvailableApartments = (availableApartments, value) => {
     return [...new Set(availableApartments)]
 }
 
+
+
 export default function RoomFilter({rooms}) {
     const context = useContext(RoomContext)
     //value from my inputs
+
+    const [startDate, setStartDate] = useState(moment());
+    const [endDate, setEndDate] = useState(null);
+    const [availableApartments, setAvaiableapartments] = useState([]);
+    const [focusedInput, setFocusedInput] = useState(null);
+
+    const selectionRange = {
+        startDate: startDate,
+        endDate: endDate,
+        key: "selection"
+    };
+
+    function handleSelect(ranges){
+        setStartDate(ranges.selection.startDate);
+        setEndDate(ranges.selection.endDate);
+    }
     const {
         handleChange,
-        handleSubmit,
         capacity,
         price,
         minPrice,
         maxPrice,
-        availableApartments,
 
     } = context;
 
-
+    const handleSubmit = event => {
+        event.preventDefault()
+        axios
+            .post("/api/availableapartments", {
+                startDate: startDate,
+                endDate: endDate
+            })
+            .then((res) => {
+                setAvaiableapartments(res.data);
+                console.log(res.data);
+            })
+    }
     //get people
     let people = getUnique(rooms, 'capacity');
     people = people.map((item, index) => {
@@ -74,15 +110,25 @@ export default function RoomFilter({rooms}) {
                 {/* end room price*/}
                 {/* room date picker*/}
                 <div className="form-group">
-                    <DatepickerSearch
-                    id = "availableApartment"
-                    value={availableApartment}
-                    onChange = {handleSubmit}
+                    <label>Date</label>
+                    <DateRangePicker
+                        startDate = {startDate}
+                        startDateId="startDate"
+                        endDate={endDate}
+                        endDateId="endDate"
+                        onDatesChange={({startDate, endDate}) => {
+                            setStartDate(startDate);
+                            setEndDate(endDate);
+                        }}
+                        focusedInput={focusedInput}
+                        onFocusChange={setFocusedInput}
+                        isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
+                        initialVisibleMonth={()=>moment().subtract(1,"month")}
+                        orientation={"vertical"}
                     />
                 </div>
                 {/* end date picker*/}
-
             </form>
         </section>
-    )
+    );
 }

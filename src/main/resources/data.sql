@@ -9,6 +9,10 @@ INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 
 /*Example reservation*/
 INSERT INTO "reservation" (id, apartment_id, billing_address, check_in_date, check_out_date, has_room, no_guests, payment, price, reservation_number, email)
-VALUES (1, 1, 'testreservation', '2021-03-01','2021-03-03', true, 12, true, 12.9, 1234,'admin@vacationhome.com');
+VALUES (1, 1, 'testreservation', '2021-05-29','2021-06-03', true, 12, true, 12.9, 1234,'admin@vacationhome.com');
+INSERT INTO "reservation" (id, apartment_id, billing_address, check_in_date, check_out_date, has_room, no_guests, payment, price, reservation_number, email)
+VALUES (2, 2, 'testreservation', '2021-05-29','2021-06-03', true, 12, true, 12.9, 1235,'lukasxmetzler@gmail.com');
+INSERT INTO "reservation" (id, apartment_id, billing_address, check_in_date, check_out_date, has_room, no_guests, payment, price, reservation_number, email)
+VALUES (3, 3, 'testreservation', '2021-06-04','2021-06-06', true, 12, true, 12.9, 1236,'lukasxmetzler@gmail.com');
 
 
