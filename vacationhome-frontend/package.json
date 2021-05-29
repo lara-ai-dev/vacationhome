@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:8080/api",
   "dependencies": {
+    "@syncfusion/ej2-react-calendars": "^19.1.64",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
@@ -20,6 +21,7 @@
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-native-table-component": "^1.2.1",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-star-rating": "^1.4.2",
@@ -27,6 +29,7 @@
     "react-table": "^7.6.3",
     "react-table-v6": "^6.8.6",
     "react-validation": "^3.0.7",
+    "redux": "^4.1.0",
     "rsuite": "^4.8.9",
     "rsuite-daterangepicker": "^3.0.5",
     "styled-components": "^5.2.1",

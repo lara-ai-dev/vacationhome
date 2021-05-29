@@ -55,7 +55,7 @@ export default function RoomFilter({rooms}) {
     const handleSubmit = event => {
         event.preventDefault()
         axios
-            .post("/api/availableapartments", {
+            .get("/api/availableapartments", {
                 startDate: startDate,
                 endDate: endDate
             })
@@ -63,6 +63,16 @@ export default function RoomFilter({rooms}) {
                 setAvaiableapartments(res.data);
                 console.log(res.data);
             })
+       /* axios
+            .get("/api/reservation", {
+                checkInDate: checkInDate,
+                checkOutDate: checkOutDate,
+                apartmentId: apartmentId
+            })
+            .then((res) => {
+                setApartmentId(res.data);
+                console.log(res.data);
+            }) */
     }
     //get people
     let people = getUnique(rooms, 'capacity');
@@ -87,6 +97,21 @@ export default function RoomFilter({rooms}) {
             <Title title="search rooms"/>
             <form className="filter-form">
 
+                <div className="form-group">
+                    <label>Date</label>
+                    <DateRangePicker
+                        startDate = {startDate}
+                        startDateId="startDate"
+                        endDate={endDate}
+                        endDateId="endDate"
+                        onDatesChange={({startDate, endDate}) => {
+                            setStartDate(startDate);
+                            setEndDate(endDate);
+                        }}
+                        focusedInput={focusedInput}
+                        onFocusChange={setFocusedInput}
+                    />
+                </div>
                 {/*guests*/}
                 <div className="form-group">
                     <label htmlFor="capacity">Guests</label>
@@ -109,24 +134,6 @@ export default function RoomFilter({rooms}) {
                 </div>
                 {/* end room price*/}
                 {/* room date picker*/}
-                <div className="form-group">
-                    <label>Date</label>
-                    <DateRangePicker
-                        startDate = {startDate}
-                        startDateId="startDate"
-                        endDate={endDate}
-                        endDateId="endDate"
-                        onDatesChange={({startDate, endDate}) => {
-                            setStartDate(startDate);
-                            setEndDate(endDate);
-                        }}
-                        focusedInput={focusedInput}
-                        onFocusChange={setFocusedInput}
-                        isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
-                        initialVisibleMonth={()=>moment().subtract(1,"month")}
-                        orientation={"vertical"}
-                    />
-                </div>
                 {/* end date picker*/}
             </form>
         </section>
