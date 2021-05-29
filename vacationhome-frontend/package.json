@@ -30,8 +30,9 @@
     "react-table-v6": "^6.8.6",
     "react-validation": "^3.0.7",
     "redux": "^4.1.0",
-    "rsuite": "^4.8.9",
+    "rsuite": "^4.10.1",
     "rsuite-daterangepicker": "^3.0.5",
+    "rsuite-table": "^3.15.1",
     "styled-components": "^5.2.1",
     "validator": "^13.5.2",
     "web-vitals": "^0.2.4"

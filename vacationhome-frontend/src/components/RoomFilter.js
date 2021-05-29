@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect} from 'react'
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import {DateRangePicker, isInclusivelyBeforeDay} from "react-dates";
+import {DateRangePicker} from "react-dates";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
@@ -11,6 +11,7 @@ import {RoomContext} from '../context'
 import Title from '../components/Title';
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+import {map} from "rsuite/src/utils/ReactChildren";
 
 //get all unique values
 
@@ -86,12 +87,17 @@ export default function RoomFilter({rooms}) {
     id = id.map((item, index) => {
         return <option key={index} value={item}>{item}</option>
     })
-
     let availableApartment = getAvailableApartments(availableApartments, 'availableApartment');
     console.log(availableApartment);
 
+    /* checks for ever apartment if it is avaiable for the date */
+    function dateAvail(id){
+        for([id.index,id.item] of map){
+            console.log(id.index + " = " + id.item)
+        }
+    }
 
-
+    dateAvail(id);
     return (
         <section className="filter-container">
             <Title title="search rooms"/>
