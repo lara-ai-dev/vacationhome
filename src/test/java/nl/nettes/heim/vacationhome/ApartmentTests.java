@@ -35,7 +35,8 @@ public class ApartmentTests {
     @Test
     void checkAvailability() throws ParseException {
 
-       /* Apartment apartment = new Apartment();
+        /*
+        Apartment apartment = new Apartment();
         apartment.setApartmentId(1L);
         apartment.setNumberOfGuests(2);
         Apartment apartment2 = new Apartment();

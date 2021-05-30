@@ -4,6 +4,7 @@ In this folder the backend of the final project can be found.
 The frontend of the project is located in the next folder : `vacationhome-frontend`.
 Furthermore, in the folder `documentation` the documentation of the project can be found. 
 
+## Backend 
 ## 1. Add Dependency Postgres
 
 Open `pom.xml`
