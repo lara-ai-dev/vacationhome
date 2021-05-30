@@ -9,8 +9,8 @@ const getUnique = (items, value) => {
     // set only accepts unique values
     return [...new Set(items.map(item => item[value]))]
 }
-const getAvailableApartments = (availableApartments) => {
-    return [availableApartments]
+const getAvailableApartments = (availableApartments, value) => {
+    return [...new Set(availableApartments)]
 }
 
 export default function RoomFilter({rooms}) {
@@ -18,6 +18,7 @@ export default function RoomFilter({rooms}) {
     //value from my inputs
     const {
         handleChange,
+        handleSubmit,
         capacity,
         price,
         minPrice,
@@ -33,11 +34,16 @@ export default function RoomFilter({rooms}) {
         return <option key={index} value={item}>{item}</option>
     })
 
+
     //get apartmentIds
     let id = getUnique(rooms, 'id');
     id = id.map((item, index) => {
         return <option key={index} value={item}>{item}</option>
     })
+
+    let availableApartment = getAvailableApartments(availableApartments, 'availableApartment');
+
+
 
     return (
         <section className="filter-container">
@@ -68,6 +74,9 @@ export default function RoomFilter({rooms}) {
                 {/* room date picker*/}
                 <div className="form-group">
                     <DatepickerSearch
+                    id = "availableApartment"
+                    value={availableApartment}
+                    onChange = {handleSubmit}
                     />
                 </div>
                 {/* end date picker*/}

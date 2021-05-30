@@ -1,11 +1,12 @@
-import React, { Component, useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import DatePicker from "react-datepicker";
-import {Button} from "@material-ui/core";
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import {RoomContext} from "../context";
+
 
 
 function DatepickerSearch(props) {
@@ -14,6 +15,7 @@ function DatepickerSearch(props) {
     const history = useHistory();
     const [endDate, setEndDate] = useState(new Date());
     const [availableApartments, setAvailableapartments] = useState([]);
+
 
 
     const selectionRange = {
@@ -31,35 +33,24 @@ function DatepickerSearch(props) {
 
     const handleChange = (event) => setStartDate(event.target.startDate);
 
-    const onSearch = (() => {
-            console.log("startDate: ", startDate);
-            console.log("endDate: ", endDate);
-            console.log("availableApartments", availableApartments)
-
-            //axios post startdate and enddate --> returns apartments which are free the selected dates (-function is in the backend)
-            axios
-                .post(`/availableapartments`, {
-                    startDate,
-                    endDate,
-
-                    availableApartments
-                })
-
-                .then((res) => {
-                    setAvailableapartments(res.data);
-                    console.log(res.data);
-
-                });
-
-        }
-
-    );
-
+    const handleSubmit = event => {
+        event.preventDefault()
+        axios
+            .post(`/availableapartments`, {
+                startDate: startDate,
+                endDate: endDate,
+            })
+            .then((res) => {
+                setAvailableapartments(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
 
     return (
         <>
-
             <DatePicker
                 selected={startDate}
                 onChange={date => setStartDate(date)}
@@ -78,12 +69,11 @@ function DatepickerSearch(props) {
             />
             <hr/>
 
-            <Button onClick={onSearch}>Search Apartments</Button>
-
             <div>
+                <button onClick={handleSubmit}>Search Apartments</button>
+
                 {availableApartments && availableApartments.map((apartment) =>  {
                     return (
-
                         <div className="datepickersearch--availableapartments-container-card">
                             <li>{apartment.apartmentNumber}
                             </li>

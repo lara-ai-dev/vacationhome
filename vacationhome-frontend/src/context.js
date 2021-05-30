@@ -28,13 +28,8 @@ class RoomProvider extends Component {
         try{
             let response = await axios.get('/apartment');
             let rooms = this.formatData(response.data);
-            console.log(rooms);
-
-            //let images = this.formatImages(Items);
-            //console.log(images);
 
             const featuredRooms = rooms.filter(data => data.featured === true);
-            console.log(featuredRooms);
             let maxPrice = Math.max(...rooms.map(data => data.price));
 
             this.setState({
@@ -48,7 +43,6 @@ class RoomProvider extends Component {
             });
 
         } catch(error){
-            console.log(error);
         }}
 
     componentDidMount(){
@@ -59,8 +53,7 @@ class RoomProvider extends Component {
         let tempImages = images.map((images) =>{
             let image = images.fields.images.map(image =>
                 image.fields.file.url);
-            // let id = image.map(rooms => rooms.apartmentId );
-            console.log(image);
+
             let room = {...images, image}
             return room;
         })
@@ -73,7 +66,6 @@ class RoomProvider extends Component {
 
         var images = this.formatImages(Items).map((images) => {
             let image = images.fields.images.map(image => image.fields.file.url);
-            console.log(image);
             return image;
         });
 
@@ -82,31 +74,21 @@ class RoomProvider extends Component {
             let id = item.apartmentId;
             //loop through my items -> iterating over the array
             let image = images;
-            console.log(image);
+
 
             if (id === 0){
-                console.log(id);
                 image = image[0]
-                console.log(image);
             }
 
             if (id === 1){
-                console.log(id);
                 image = image[1]
-                console.log(image);
             }
 
             if (id === 2){
-                console.log(id);
                 image = image[2]
-                console.log(image);
             }
 
             let room = { ...item, id, image: image};
-
-            //let room = { ...item, id, image: images};
-
-            console.log(room)
             return room;
 
         })
@@ -130,10 +112,8 @@ class RoomProvider extends Component {
         let tempImg = this.formatImages(Items).map((images) =>{
 
             let image = images.Items;
-            console.log(image);
             return image;
         });
-        console.log(tempImg);
         return tempImg;
     }
 

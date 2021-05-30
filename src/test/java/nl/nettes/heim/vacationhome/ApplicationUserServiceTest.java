@@ -18,7 +18,7 @@ public class ApplicationUserServiceTest {
     private ApplicationUserService applicationUserService;
     @Autowired
     private ApplicationUserController applicationUserController;
-/*
+
     @Test
     void registerTest(){
         ApplicationUser newUser = new ApplicationUser();
@@ -28,16 +28,18 @@ public class ApplicationUserServiceTest {
         newUser.setPhoNo(0);
         newUser.setEmail("test123@gmail.com");
         newUser.setAddress("hereadress");
-        ApplicationUser savedUser = applicationUserController.register("TestUsername","Test123","TestFirstname",
-                "TestLastname",0,"test123@gmail.com");
+        /*ApplicationUser savedUser = applicationUserController.register("TestUsername","Test123","TestFirstname",
+                "TestLastname",0,"test123@gmail.com");*/
         ApplicationUser savedUser2 = applicationUserController.register(newUser);
-        assertEquals(newUser.getUserName(),savedUser.getUserName());
+        //assertEquals(newUser.getUserName(),savedUser.getUserName());
         assertEquals(newUser,savedUser2);
 
 
     }
+
+
     @Test
     void signInTest() {
         applicationUserService.signIn("test2","123456");
-    }*/
+    }
 }

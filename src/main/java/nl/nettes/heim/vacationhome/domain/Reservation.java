@@ -21,6 +21,7 @@ public class Reservation {
 
     private Long id;
 
+
     private Integer reservationId;
     private Long apartmentId;
     private boolean hasRoom;

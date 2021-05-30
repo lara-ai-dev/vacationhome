@@ -17,7 +17,7 @@ const required = value => {
     }
 };
 
-// checks the value of the email - usage of isEmai from validator to verify email
+// checks the value of the email - usage of isEmail from validator to verify email
 const email = value => {
     if (!isEmail(value)) {
         return (

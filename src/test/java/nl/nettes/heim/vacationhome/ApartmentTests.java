@@ -35,7 +35,8 @@ public class ApartmentTests {
     @Test
     void checkAvailability() throws ParseException {
 
-       /* Apartment apartment = new Apartment();
+        /*
+        Apartment apartment = new Apartment();
         apartment.setApartmentId(1L);
         apartment.setNumberOfGuests(2);
         Apartment apartment2 = new Apartment();
@@ -56,7 +57,7 @@ public class ApartmentTests {
         Integer numberOfBeds = 2;
 
        for(Apartment apartment : (apartmentService.getAvailableApartments(startDate,endDate))){
-            System.out.println(apartment.getApartmentId());
+            //System.out.println(apartment.getApartmentId());
         };
 /*
         for(Apartment apartment : (apartmentService.getAllAvailableApartments(numberOfBeds,startDate,endDate))){
