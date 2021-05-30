@@ -39,13 +39,12 @@ function DatepickerSearch(props) {
             .post(`/availableapartments`, {
                 startDate: startDate,
                 endDate: endDate,
-                //numberOfBeds: 4
             })
-
             .then((res) => {
                 setAvailableapartments(res.data);
-                console.log(res.data);
-
+            })
+            .catch(err => {
+                console.log(err);
             })
     }
 

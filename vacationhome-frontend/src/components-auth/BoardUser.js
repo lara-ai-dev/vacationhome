@@ -20,10 +20,13 @@ export default class BoardUser extends Component {
             comment: "",
             currentUser: undefined,
             fileName: "",
-            progress: 0
+            progress: 0,
+            successful: false
 
         };
     }
+
+
 
 
     //get user board - review
@@ -61,7 +64,6 @@ export default class BoardUser extends Component {
 
     //select file to upload
     fileSelectedHandler = event => {
-        console.log(event);
         this.setState({
             selectedFile: event.target.files[0]
         })
@@ -81,6 +83,14 @@ export default class BoardUser extends Component {
                 console.log(res);
                 console.log(res.data);
             })
+            .catch(err => {
+                console.log(err);
+            })
+
+        this.setState({
+            successful: true
+        })
+        alert("Your review has been successfully placed!");
     }
 
 
@@ -99,11 +109,13 @@ export default class BoardUser extends Component {
                 this.setState({progress});
             }
 
-
         })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
             })
     }
 
@@ -115,10 +127,10 @@ export default class BoardUser extends Component {
             <div className="container-review">
                 <Title title="Review"/>
 
-                <form onSubmit={this.handleSubmit}>
+                <div className="review-container">
+                <form onSubmit={this.handleSubmit}  success={this.state.formSuccess} error={this.state.formError}>
                     <div className="form-group">
-                        <label class="col-md-3 control-label" for="message">Review</label>
-
+                        <label class="" for="message">Your Review</label>
                         <div class="container-review-textbox">
                             <textarea
                                 class="form-control"
@@ -146,15 +158,17 @@ export default class BoardUser extends Component {
 
                         <div className="form-uploadimage">
                             <input type="file" onChange={this.fileSelectedHandler}/>
-                            <button onClick={this.fileUploadHandler}>Upload</button>
+                            <button className="btn btn-primary" onClick={this.fileUploadHandler}>Upload</button>
                             <div className="uploadimage-progress">
                                 <Line percent={this.state.progress}label={`${this.state.progress}% `}/>
                             </div>
                         </div>
-                        <button className="btn btn-primary btn-block" onSubmit="submit">Submit</button>
+                        <button className="btn-primary review" onSubmit="submit">Submit</button>
+
                     </div>
 
                 </form>
+                </div>
             </div>
         );
     }

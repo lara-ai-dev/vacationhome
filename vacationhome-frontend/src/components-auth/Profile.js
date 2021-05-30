@@ -3,47 +3,66 @@ import { RoomContext } from '../context'
 import AuthService from '../services/auth.service';
 import axios from "axios";
 import Title from "../components/Title";
-import {Button} from "rsuite";
 
 // gets User from local storage with token (user details)
-
 const Profile = () => {
 
     const currentUser = AuthService.getCurrentUser();
     const context = useContext(RoomContext)
     const {}  = context;
-    const [apartmentId, setApartmentId] = useState();
-    const [email, setEmail] = useState();
-    const [checkInDate, setCheckInDate] = useState();
-    const [checkOutDate, setCheckOutDate] = useState();
-    const [numberOfGuests, setNumberOfGuests] = useState();
+
+    const [apartmentId, setApartmentId] = useState(0);
+    const [email, setEmail] = useState("");
+    const [checkInDate, setCheckInDate] = useState(new Date());
+    const [checkOutDate, setCheckOutDate] = useState(new Date());
+    const [noGuests, setNoGuests] = useState("");
+
 
     const apartments = useState;
 
     axios.get(`/apartment/`)
         .then(res =>{
             let apartments = res.data;
-            console.log(apartments)
+        })
+        .catch(err => {
+            console.log(err);
         })
 
 
-    const handleSubmit = async (event) =>{
-        event.preventDefault();
-       // const { apartmentId,email, checkInDate, checkOutDate} = values;
 
-        await axios.post ('/reservation', {
-            
-            email,
-            checkInDate,
-            checkOutDate,
-            numberOfGuests})
 
-            .then(response =>{
-                console.log(response);
-            })
+        const handleSubmit = async (event) =>{
+            event.preventDefault();
+            //const { apartmentId,email, checkInDate, checkOutDate} = values;
+
+             axios.post ('/reservation', {
+                email,
+                apartmentId,
+                checkInDate,
+                checkOutDate,
+                noGuests
+
+         })
+
+            .then(response=>{
+                setEmail(email);
+                setCheckInDate(checkInDate);
+                setCheckOutDate(checkOutDate);
+                setNoGuests(noGuests);
+
+                })
+                 .catch(err => {
+                     console.log(err);
+                 })
+
+            alert("Your reservation has been successfully placed!");
 
         };
 
+
+    function handleChange(e){
+        setApartmentId(e.target.value);
+    };
 
 
     return (
@@ -73,39 +92,41 @@ const Profile = () => {
 
             <div className="reservationinformation">
                 <Title title="Make reservation"/>
-                <form onSubmit={handleSubmit}>
+                <div className="reservation-add">
+                <form  onSubmit={handleSubmit}>
                     <div className="form-control">
                         <label htmlFor="emailAdress">Email address</label>
                         <input type="email" className="form-control" id="email"
-                               placeholder={currentUser.email} value={email}/>
-                    </div>
-                    <div className="form-control">
+                               placeholder={currentUser.email} value={email} onChange={e => setEmail(e.target.value)}/>
+
                         <label htmlFor="apartmentSelect">Select Apartment</label>
-                        <select className="form-control" id="apartmentId" value={apartmentId} >
-                            <option>{apartments[0]}1</option>
-                            <option>{apartments[1]}2</option>
-                            <option>{apartments[2]}3</option>
+                        <select className="form-control"  id="apartmentId" value={apartmentId} onChange={e => setApartmentId(Number(e.target.value))}>
+                            <option value={[0]}>{apartments[0]}1</option>
+                            <option value ={[1]}>{apartments[1]}2</option>
+                            <option value = {[2]}>{apartments[2]}3</option>
                         </select>
-                    </div>
 
-                    <div className="form-control">
+
+
                         <p>Checkin date</p>
-                        <input className="form-control" type="date" id="example-date-input" value={checkInDate}/>
+                        <input className="form-control" type="date" id="checkInDate" value={checkInDate} onChange={e => setCheckInDate(e.target.value)}/>
                         <p>Checkout date</p>
-                        <input className="form-control" type="date"  id="example-date-input" value={checkOutDate}/>
-                    </div>
+                        <input className="form-control" type="date"  id="checkOutDate" value={checkOutDate} onChange={e => setCheckOutDate(e.target.value)}/>
 
-                    <div className="form-control">
+
+
                         <p>Number of Guests</p>
-                        <input type="number" id="noGuests" name="numberOfGuests"  min="1" max="5" value={numberOfGuests}/>
+                        <input type="number" id="noGuests" name="numberOfGuests"  min="1" max="5" value={noGuests} onChange={e => setNoGuests(Number(e.target.value))}/>
+
+
+
+
+                        <button className="btn btn-primary" type="submit" onSubmit="submit">Reserve</button>
                     </div>
 
 
-                    <div className="form-control">
-                        <Button className="form-control" type="submit" onSubmit="submit">Reserve</Button>
-                    </div>
                 </form>
-
+                </div>
 
             </div>
 

@@ -4,7 +4,7 @@ In this folder the backend of the final project can be found.
 The frontend of the project is located in the next folder : `vacationhome-frontend`.
 Furthermore, in the folder `documentation` the documentation of the project can be found. 
 
-## Add Dependency
+## 1. Add Dependency Postgres
 
 Open `pom.xml`
 
@@ -17,43 +17,17 @@ Add the following lines
 </dependency>
 ```
 
-## Configure Spring Datasource, JPA and App properties
+## 2. Configure Spring Datasource, JPA and App properties
 
-Open `src/main/resources/application.properties`
+Inside `src/main/resources/application.properties`
 
-Add the following lines: 
-
-```
-spring.datasource.url=jdbc:postgresql://localhost:5432/vacationhome
-spring.datasource.username=postgres
-spring.datasource.password=test
-spring.datasource.initialization-mode=always
-
-spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
-spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
-
-spring.jpa.hibernate.ddl-auto=create
-
-# App Properties
-vacationhome.app.jwtSecret= vacationhomeSecretKey
-vacationhome.app.jwtExpirationMs= 86400000
-
-#Enable multipart uploads
-spring.servlet.multipart.enabled = true 
-#Threshold after which files are written to disk
-spring.servlet.multipart.file-size-threshold=2KB
-#Max file size
-spring.servlet.multipart.max-file-size= 2MB
-#Max Request size
-spring.servlet.multipart.max-request-size=2MB
-```
-## Run Spring Boot 
+## 3. Run Spring Boot 
 
 ```
 mvn spring-boot:run
 ```
 
-## Run SQL statements 
+## 4. Run SQL statements 
 ```
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
@@ -70,17 +44,5 @@ VALUES (1, 1, 'testreservation', '2021-03-01','2021-03-03', true, 12, true, 12.9
 
 ```
 
-
-##When running the application as an Admin
-ONLY FOR TESTING PURPOSES, add the following JSON :
-
-```
-{
-"username" : "admin",
-"email" : "admin@admin.com",
-"password" : "123456",
-"role" : ["admin"]
-}
-```
 
 

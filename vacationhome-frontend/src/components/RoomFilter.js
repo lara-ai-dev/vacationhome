@@ -42,7 +42,6 @@ export default function RoomFilter({rooms}) {
     })
 
     let availableApartment = getAvailableApartments(availableApartments, 'availableApartment');
-    console.log(availableApartment);
 
 
 

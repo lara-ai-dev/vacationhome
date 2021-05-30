@@ -43,7 +43,9 @@ export default class BoardAdmin extends Component {
 
                 const reservations = res.data;
                 this.setState({reservations});
-                console.log(reservations);
+            })
+            .catch(err => {
+                console.log(err);
             })
 
     }
@@ -52,11 +54,13 @@ export default class BoardAdmin extends Component {
     deleteReservation(id, e) {
         axios.delete(`/reservation/${id}`)
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+
 
                 const reservations = this.state.reservations.filter(item => item.id !== id);
                 this.setState({reservations});
+            })
+            .catch(err => {
+                console.log(err);
             })
     }
 
@@ -89,7 +93,7 @@ export default class BoardAdmin extends Component {
                                 <td>{reservation.checkOutDate}</td>
                                 <td>{reservation.price}</td>
                                 <td>
-                                    <button className="btn btn-danger"
+                                    <button className="btn btn-primary"
                                             onClick={(e) => this.deleteReservation(reservation.id, e)}>Delete
                                     </button>
                                 </td>

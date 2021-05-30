@@ -15,7 +15,7 @@
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
   --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
-/* globals */
+
 body {
   padding-top: 0px;
   color: var(--mainBlack);
@@ -359,7 +359,7 @@ h6 {
 .room-info {
   border-radius: 10px;
   text-transform: capitalize;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
   text-align: center;
   font-weight: 700;
   letter-spacing: var(--mainSpacing);
@@ -477,14 +477,14 @@ h6 {
   grid-row-gap: 2rem;
   grid-column-gap: 40px;
 }
-.form-group {
-  text-transform: capitalize;
-}
+
 .form-group label {
   display: block;
   letter-spacing: var(--mainSpacing);
   margin-bottom: 0.5rem;
 }
+
+
 .form-control {
   width: 100%;
   background: transparent;
@@ -505,6 +505,8 @@ h6 {
   font-size: 0.8rem;
   margin-left: 0.5rem;
 }
+
+
 @media screen and (min-width: 776px) {
   .filter-form {
     width: 70vw;
@@ -527,7 +529,13 @@ label {
 .card-container.card {
   max-width: 350px !important;
   padding: 40px 40px;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  transition: var(--mainTransition);
+  height: 95%;
+  border-radius: 10px;
 }
+
+
 
 .card {
   background-color: #f7f7f7;
@@ -542,15 +550,7 @@ label {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
+
 /* end of log in & sign up */
 
 /* personal information container */
@@ -563,13 +563,15 @@ label {
   position: center;
   margin-left:auto;
   margin-right: auto;
-  height: auto;
   padding-bottom: 20px;
   left: 251px;
   top: 336px;
 
   background: #C4C4C4;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  transition: var(--mainTransition);
+  height: 95%;
+  border-radius: 10px;
 }
 
 .container-personalinformation p {
@@ -614,6 +616,12 @@ label {
 /* end of map information container */
 
 /* review container */
+.review-container{
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  transition: var(--mainTransition);
+  height: 95%;
+  border-radius: 10px;
+}
 .container-review-textbox{
   text-align: center;
   width: 800px;
@@ -632,17 +640,13 @@ label {
   text-align: center;
 }
 
-.form-group btn-primary{
-  margin-left: 100px;
-
-}
-
 .form-uploadimage{
   text-align: center;
   margin-left:auto;
   margin-right: auto;
   padding-bottom: 50px;
 }
+
 
 .container-review {
   padding: 5rem 0;
@@ -688,6 +692,8 @@ label {
   text-align:center;
 }
 
+
+
 /* review image container*/
 .imageitem-container{
   margin-top:80px;
@@ -720,6 +726,12 @@ label {
 
 .progress{
   width: 20%;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.btn-primary review{
   margin-left:auto;
   margin-right: auto;
   margin-top: 30px;
@@ -857,6 +869,7 @@ h1 {
 }
 /* end of card item*/
 
+
 /*start reservation table */
 
 
@@ -877,18 +890,26 @@ tr:hover {background-color: #f5f5f5;}
 /*end reservation table */
 
 /* make reservation */
+
+.reservation-add div {
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  transition: var(--mainTransition);
+  height: 95%;
+  border-radius: 10px;
+}
 .form-control {
   width: 70%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 4px;
 }
 
+
 div .form-control{
-  border-radius: 5px;
-  background-color: lightgrey;
+  background-color: var(--mainGrey);
   padding: 20px;
+  margin-left: 35px;
+  border-radius: 5px;
 }
 
 .form-control [type=submit] {
@@ -904,6 +925,11 @@ div .form-control{
 
 input[type=submit] .form-control :hover {
   background-color: #45a049;
+}
+
+button{
+  margin-top: 20px;
+  margin-left: 90px;
 }
 
 /* end make reservation*/

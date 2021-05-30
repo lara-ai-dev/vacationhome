@@ -39,7 +39,9 @@ export default function Home() {
             .then((response) => {
                 setReviews(response.data);
             })
-
+            .catch(err => {
+                console.log(err);
+            })
     }, []);
 
     //get uploaded images from database
@@ -48,8 +50,9 @@ export default function Home() {
             .then((response) => {
 
                 setFiles(response.data);
-                console.log(response.data)
             })
+            .catch(err => {
+                console.log(err)})
     }, [])
 
     //the reviews & images are loaded initially
