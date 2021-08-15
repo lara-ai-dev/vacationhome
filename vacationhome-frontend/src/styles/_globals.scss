@@ -59,22 +59,7 @@ h6 {
   font-family: Montserrat, sans-serif;
 }
 
-.btn-primary {
-  display: inline-block;
-  text-decoration: none;
-  letter-spacing: var(--mainSpacing);
-  color: var(--mainGrey);
-  background: var(--primaryColor);
-  padding: 0.4rem 0.9rem;
-  border: 3px solid var(--primaryColor);
-  transition: var(--mainTransition);
-  cursor: pointer;
-}
-.btn-primary:hover {
-  background: transparent;
-  color: var(--primaryColor);
-  text-decoration: none;
-}
+
 .loading {
   text-transform: capitalize;
   text-align: center;

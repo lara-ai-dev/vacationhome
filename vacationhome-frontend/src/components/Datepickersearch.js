@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {RoomContext} from "../context";
+import Button from "./Button";
 
 
 
@@ -70,7 +71,7 @@ function DatepickerSearch(props) {
             <hr/>
 
             <div>
-                <button onClick={handleSubmit}>Search Apartments</button>
+                <Button className="btn-registration" onClick={handleSubmit}>Search Apartments</Button>
 
                 {availableApartments && availableApartments.map((apartment) =>  {
                     return (

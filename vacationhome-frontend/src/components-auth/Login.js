@@ -100,7 +100,7 @@ const Login = (props) => {
                     </div>
 
                     <div className="form-group">
-                        <Button className="button-registration" disabled={loading}>
+                        <Button className="btn-registration" disabled={loading}>
                             {loading && (
                                 <span className="spinner-border spinner-border-sm"></span>
                             )}
