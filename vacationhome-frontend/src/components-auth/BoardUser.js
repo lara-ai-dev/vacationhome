@@ -4,7 +4,7 @@ import UserService from "../services/user.service";
 import Title from "../components/Title";
 import StarRatingComponent from 'react-star-rating-component';
 import AuthService from "../services/auth.service";
-import '../App.css';
+import '../App.scss';
 //import {ProgressBar} from "react-bootstrap";
 import { Line, Circle } from 'rc-progress';
 

@@ -1,0 +1,51 @@
+/* room */
+.room {
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  transition: var(--mainTransition);
+  height: 95%;
+  border-radius: 10px;
+}
+.room:hover {
+  box-shadow: var(--darkShadow);
+}
+
+.img-container {
+  position: relative;
+}
+.img-container img {
+  border-radius: 10px;
+  width: 100%;
+  display: block;
+  transition: var(--mainTransition);
+}
+
+.room-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0);
+  transition: all 0.3s linear;
+
+}
+.img-container:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+.img-container:hover img {
+  opacity: 0.3;
+}
+.img-container:hover .price-top {
+  opacity: 0;
+}
+.img-container:hover .room-link {
+  transform: translate(-50%, -50%) scale(1);
+  text-decoration: none;
+}
+.room-info {
+  border-radius: 10px;
+  text-transform: capitalize;
+  padding: 2rem 0;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: var(--mainSpacing);
+}
+/* end of room  */

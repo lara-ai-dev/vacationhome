@@ -1,0 +1,124 @@
+/* review container */
+.review-container{
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  transition: var(--mainTransition);
+  height: 95%;
+  border-radius: 10px;
+}
+.container-review-textbox{
+  text-align: center;
+  width: 800px;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.form-group label{
+  padding: 2rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.form-group p{
+  text-align: center;
+}
+
+.form-uploadimage{
+  text-align: center;
+  margin-left:auto;
+  margin-right: auto;
+  padding-bottom: 50px;
+}
+
+
+.container-review {
+  padding: 5rem 0;
+
+}
+
+.reviewitem-container{
+  margin-top:80px;
+  height: fit-content;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.reviewitem-container-information{
+  height: auto;
+  width: 100%;
+  background-color: #fff;
+}
+
+.reviewitem-username{
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-style: italic;
+}
+
+.reviewitem-comment{
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  margin-bottom: 10px;
+}
+
+.reviewitem-rating{
+  text-align:center;
+}
+
+
+
+/* review image container*/
+.imageitem-container{
+  margin-top:80px;
+  height: fit-content;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.imageitem-container-information{
+  height: auto;
+  width: 100%;
+  background-color: #fff;
+}
+
+.imageitem-filename{
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-style: italic;
+}
+
+.progress{
+  width: 20%;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.btn-primary review{
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+/* end review image container*/
+
+/* end of review container */

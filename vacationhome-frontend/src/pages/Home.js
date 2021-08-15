@@ -6,7 +6,7 @@ import FeaturedRooms from '../components/FeaturedRooms';
 import Title from "../components/Title";
 import UserService from '../services/user.service';
 import axios from 'axios';
-import '../App.css';
+import '../App.scss';
 import StarRatingComponent from 'react-star-rating-component';
 
 
