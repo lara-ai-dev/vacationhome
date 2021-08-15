@@ -5,6 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
+import Button from "../components/Button";
 
 //alert for this field is empty
 const required = value => {
@@ -176,7 +177,7 @@ export default class Register extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <button className="btn btn-primary btn-block">Sign Up</button>
+                                    <Button className="button-registration">Sign Up</Button>
                                 </div>
                             </div>
                         )}
