@@ -1,8 +1,8 @@
 import React, {useState, useRef} from "react";
 import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
+//import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
+import InputField from "../components/InputField";
 import AuthService from "../services/auth.service";
 import Button from "../components/Button";
 //verify username and password as a required field
@@ -78,7 +78,7 @@ const Login = (props) => {
                 <Form onSubmit={handleLogin} ref={form}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <Input
+                        <InputField
                             type="text"
                             className="form-control"
                             name="username"
@@ -90,7 +90,7 @@ const Login = (props) => {
 
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <Input
+                        <InputField
                             type="password"
                             className="form-control"
                             name="password"

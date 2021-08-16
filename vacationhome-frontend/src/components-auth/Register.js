@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
+//import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import InputField from "../components/InputField";
 
 import AuthService from "../services/auth.service";
 import Button from "../components/Button";
+import {Input} from "rsuite";
 
 //alert for this field is empty
 const required = value => {
@@ -142,7 +144,7 @@ export default class Register extends Component {
                             <div>
                                 <div className="form-group">
                                     <label htmlFor="username">Username</label>
-                                    <Input
+                                    <InputField
                                         type="text"
                                         className="form-control"
                                         name="username"
@@ -154,7 +156,7 @@ export default class Register extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="email">Email</label>
-                                    <Input
+                                    <InputField
                                         type="text"
                                         className="form-control"
                                         name="email"
@@ -166,7 +168,7 @@ export default class Register extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="password">Password</label>
-                                    <Input
+                                    <InputField
                                         type="password"
                                         className="form-control"
                                         name="password"
