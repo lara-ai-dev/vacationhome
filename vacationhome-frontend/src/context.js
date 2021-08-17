@@ -7,21 +7,25 @@ const RoomContext = React.createContext();
 // <RoomContext.Provider value={}>
 
 class RoomProvider extends Component {
-    state={
-        rooms:[],
-        sortedRooms:[],
-        featuredRooms: [],
-        images : [],
-        loading: true,
-        type:"all",
-        capacity: 1,
-        price: 0,
-        minPrice: 0,
-        maxPrice: 0,
-        minSize: 0,
-        maxSize: 0,
 
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            rooms:[],
+            sortedRooms:[],
+            featuredRooms: [],
+            images : [],
+            loading: true,
+            type:"all",
+            capacity: 1,
+            price: 0,
+            minPrice: 0,
+            maxPrice: 0,
+            minSize: 0,
+            maxSize: 0,
+        }
+    }
+
 
     //getData life cycle method
     async getData() {
