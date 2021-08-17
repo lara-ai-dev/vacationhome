@@ -22,7 +22,7 @@ const Profile = () => {
 
     axios.get(`/apartment/`)
         .then(res =>{
-            let apartments = res.data;
+            const apartments = res.data;
         })
         .catch(err => {
             console.log(err);

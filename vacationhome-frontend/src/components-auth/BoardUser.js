@@ -105,7 +105,7 @@ export default class BoardUser extends Component {
         axios.post('/upload', fd, {
 
             onUploadProgress: (progressEvent) => {
-                let progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                 this.setState({progress});
             }
 

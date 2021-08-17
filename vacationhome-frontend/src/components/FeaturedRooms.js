@@ -16,7 +16,8 @@ export default class FeaturedRooms extends Component {
 
     // loop through my rooms and set up JSX -- wrap room in room component pass room prop with all information about that specific room
      rooms = rooms.map(room => {
-      return <Room key={room.id} room={room} />;
+
+        return <Room key={room.id} room={room} />;
 
     });
 

@@ -41,7 +41,7 @@ export default function RoomFilter({rooms}) {
         return <option key={index} value={item}>{item}</option>
     })
 
-    let availableApartment = getAvailableApartments(availableApartments, 'availableApartment');
+    const availableApartment = getAvailableApartments(availableApartments, 'availableApartment');
 
 
 

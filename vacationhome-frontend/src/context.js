@@ -26,11 +26,11 @@ class RoomProvider extends Component {
     //getData life cycle method
     async getData() {
         try{
-            let response = await axios.get('/apartment');
-            let rooms = this.formatData(response.data);
+            const  response = await axios.get('/apartment');
+            const rooms = this.formatData(response.data);
 
             const featuredRooms = rooms.filter(data => data.featured === true);
-            let maxPrice = Math.max(...rooms.map(data => data.price));
+            const maxPrice = Math.max(...rooms.map(data => data.price));
 
             this.setState({
                 rooms,
@@ -50,11 +50,11 @@ class RoomProvider extends Component {
     }
 
     formatImages(images){
-        let tempImages = images.map((images) =>{
-            let image = images.fields.images.map(image =>
+        const tempImages = images.map((images) =>{
+            const image = images.fields.images.map(image =>
                 image.fields.file.url);
 
-            let room = {...images, image}
+            const room = {...images, image}
             return room;
         })
         return tempImages;
@@ -64,14 +64,14 @@ class RoomProvider extends Component {
 
     formatData(items, images) {
 
-        var images = this.formatImages(Items).map((images) => {
-            let image = images.fields.images.map(image => image.fields.file.url);
+        images = this.formatImages(Items).map((images) => {
+            const image = images.fields.images.map(image => image.fields.file.url);
             return image;
         });
 
-        let tempItems = items.map((item) => {
+        const tempItems = items.map((item) => {
             //get id
-            let id = item.apartmentId;
+            const id = item.apartmentId;
             //loop through my items -> iterating over the array
             let image = images;
 
@@ -88,7 +88,7 @@ class RoomProvider extends Component {
                 image = image[2]
             }
 
-            let room = { ...item, id, image: image};
+            const room = { ...item, id, image: image};
             return room;
 
         })
@@ -100,8 +100,8 @@ class RoomProvider extends Component {
 
     //getroom function accept only specific slug
     getRoom = (slug) =>{
-        let tempRooms = [...this.state.rooms];
-        let tempImages = [...this.state.images];
+        const tempRooms = [...this.state.rooms];
+        const tempImages = [...this.state.images];
 
         //find method to get the room that matches the slug that is passed in the function (find function bc we only need one object)
         const room = tempRooms.find((room) =>room.slug === slug);
@@ -109,9 +109,9 @@ class RoomProvider extends Component {
     };
 
     getImages = (Items) => {
-        let tempImg = this.formatImages(Items).map((images) =>{
+        const tempImg = this.formatImages(Items).map((images) =>{
 
-            let image = images.Items;
+            const image = images.Items;
             return image;
         });
         return tempImg;
