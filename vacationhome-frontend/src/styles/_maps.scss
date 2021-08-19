@@ -1,0 +1,19 @@
+/* map information container */
+.container-maps{
+  overflow: hidden;
+  position: relative;
+}
+
+.container-maps Title{
+  padding: 5rem 0;
+}
+
+.container-maps iframe{
+  left: 0;
+  top: 0;
+  height: 500px;
+  width: 100%;
+  postion: absolute;
+}
+
+/* end of map information container */

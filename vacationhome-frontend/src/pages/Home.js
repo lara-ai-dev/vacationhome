@@ -31,7 +31,7 @@ export default function Home() {
                 setContent(_content);
             }
         );
-    }, []);
+    }, [content]);
 
     //get reviews from database
     const loadReviews = useCallback(() => {
@@ -42,7 +42,7 @@ export default function Home() {
             .catch(err => {
                 console.log(err);
             })
-    }, []);
+    }, [reviews]);
 
     //get uploaded images from database
     const loadImages = useCallback(() => {
@@ -53,7 +53,7 @@ export default function Home() {
             })
             .catch(err => {
                 console.log(err)})
-    }, [])
+    }, [files])
 
     //the reviews & images are loaded initially
     useEffect(() => {

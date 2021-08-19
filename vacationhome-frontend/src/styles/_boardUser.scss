@@ -1,29 +1,29 @@
 /* review container */
-.review-container{
+.review__container{
   box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
   transition: var(--mainTransition);
   height: 95%;
   border-radius: 10px;
 }
-.container-review-textbox{
+.review__textContainer{
   text-align: center;
   width: 800px;
   margin-left: auto;
   margin-right:auto;
 }
 
-.form-group label{
+.review__form--group{
   padding: 2rem;
   text-align: center;
   margin-left: auto;
   margin-right:auto;
 }
 
-.form-group p{
+.review__form--group p{
   text-align: center;
 }
 
-.form-uploadimage{
+.form__imageUploader{
   text-align: center;
   margin-left:auto;
   margin-right: auto;

@@ -3,7 +3,7 @@ import '../styles/_button.scss';
 
 const Button = ({ children, onClick, btnColor = 'teal', labelColor, disabled, type, style, ...props }) => {
     return (
-        <button className="btn-registration" onClick={props.handleClick}>
+        <button className="btn btn--registration" onClick={props.handleClick}>
             {children || 'label'}
         </button>
     );

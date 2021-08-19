@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const InputField = ({ value, label, name, placeholder, type, onChange}) => (
 
@@ -11,6 +11,7 @@ const InputField = ({ value, label, name, placeholder, type, onChange}) => (
             className="form-control"
             placeholder={placeholder}
             onChange={onChange}
+            onInvalid={value}
         />
     </div>
 );

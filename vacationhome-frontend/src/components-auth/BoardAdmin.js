@@ -67,33 +67,35 @@ export default class BoardAdmin extends Component {
     render() {
         const {reservations} = this.state;
         return (
-            <div className="reservationinformation">
-                <Title title="Reservation information"/>
-                <div className="container-reservationinformation">
 
-                </div>
 
-                <table striped bordered hover>
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>Check In</th>
-                        <th>Check Out</th>
-                        <th>Price</th>
+            <div className="reservationInformation">
+                <Title className="reservationInformation__title" title="Overview reservations"/>
+                <div className="reservationsInformation__container">
+
+
+                <table striped bordered hover className = "reservationInformation__table">
+                    <thead className="reservationInformation__tableHead">
+                    <tr className="reservationInformation__tableRow">
+                        <th className="reservationInformation__tableHeader">ID</th>
+                        <th className="reservationInformation__tableHeader">Email</th>
+                        <th className="reservationInformation__tableHeader">Check In</th>
+                        <th className="reservationInformation__tableHeader">Check Out</th>
+                        <th className="reservationInformation__tableHeader">Price</th>
                     </tr>
                     </thead>
-                    <tbody>
+
+                    <tbody className="reservationInformation__tableBody">
                     {reservations.map((reservation) => {
                         return (
-                            <tr key={reservation.id}>
-                                <td>{reservation.id}</td>
-                                <td>{reservation.email}</td>
-                                <td>{reservation.checkInDate}</td>
-                                <td>{reservation.checkOutDate}</td>
-                                <td>{reservation.price}</td>
-                                <td>
-                                    <button className="btn btn-primary"
+                            <tr key={reservation.id} className="reservationInformation_tableRow">
+                                <td className="reservationInformation__tableData">{reservation.id}</td>
+                                <td className="reservationInformation__tableData">{reservation.email}</td>
+                                <td className="reservationInformation__tableData">{reservation.checkInDate}</td>
+                                <td className="reservationInformation__tableData">{reservation.checkOutDate}</td>
+                                <td className="reservationInformation__tableData">{reservation.price}</td>
+                                <td className="reservationInformation__tableData">
+                                    <button className="btn btn--primary"
                                             onClick={(e) => this.deleteReservation(reservation.id, e)}>Delete
                                     </button>
                                 </td>
@@ -104,6 +106,7 @@ export default class BoardAdmin extends Component {
                     </tbody>
                 </table>
 
+                </div>
             </div>
         );
     }

@@ -15,6 +15,7 @@ export default class Navbar extends Component {
             showAdminBoard: false,
             showUserBoard: false,
             currentUser: undefined,
+            isOpen: false
         };
     }
 
@@ -35,9 +36,7 @@ export default class Navbar extends Component {
         AuthService.logout();
     }
 
-    state = {
-        isOpen: false
-    }
+
 
     //toggling in between the false 
     handleToggle = () => {

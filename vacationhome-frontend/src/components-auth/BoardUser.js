@@ -124,14 +124,14 @@ export default class BoardUser extends Component {
         const {rating} = this.state;
 
         return (
-            <div className="container-review">
-                <Title title="Review"/>
+            <div className="review">
+                <Title className="review__title" title="Review"/>
 
-                <div className="review-container">
-                <form onSubmit={this.handleSubmit}  success={this.state.formSuccess} error={this.state.formError}>
-                    <div className="form-group">
-                        <label class="" for="message">Your Review</label>
-                        <div class="container-review-textbox">
+                <div className="review__container">
+                <form className="review__form" onSubmit={this.handleSubmit}  success={this.state.formSuccess} error={this.state.formError}>
+                    <div className="review__form--group">
+                        <label className="review__formLabel" for="message">Your Review</label>
+                        <div className="review__textContainer">
                             <textarea
                                 class="form-control"
                                 id="comment"
@@ -145,25 +145,25 @@ export default class BoardUser extends Component {
                         </div>
                     </div>
 
-                    <div className="form-group">
-                            <label class="col-md-3 control-label" for="message">Your rating</label>
+                    <div className="review__form--group">
+                            <label class="review__label--star" for="message">Your rating</label>
                             <p><StarRatingComponent
                                 name="rate1"
                                 starCount={5}
                                 value={rating}
                                 onStarClick={this.onStarClick.bind(this)}
                             /></p>
-                            <label className="col-md-3 control-label" htmlFor="message">If you want leave a picture for
+                            <label className="review__label--message" htmlFor="message">If you want leave a picture for
                                 us!</label>
 
-                        <div className="form-uploadimage">
+                        <div className="review__imageUploader">
                             <input type="file" onChange={this.fileSelectedHandler}/>
-                            <button className="btn btn-primary" onClick={this.fileUploadHandler}>Upload</button>
-                            <div className="uploadimage-progress">
+                            <button className="btn btn--primary" onClick={this.fileUploadHandler}>Upload</button>
+                            <div className="review__imageProgress">
                                 <Line percent={this.state.progress}label={`${this.state.progress}% `}/>
                             </div>
                         </div>
-                        <button className="btn-primary review" onSubmit="submit">Submit</button>
+                        <button className="btn btn--primary" onSubmit="submit">Submit</button>
 
                     </div>
 
