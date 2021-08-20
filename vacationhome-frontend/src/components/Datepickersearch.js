@@ -71,11 +71,11 @@ function DatepickerSearch(props) {
             <hr/>
 
             <div>
-                <Button className="btn-registration" onClick={handleSubmit}>Search Apartments</Button>
+                <Button className="btn btn--registration" onClick={handleSubmit}>Search Apartments</Button>
 
                 {availableApartments && availableApartments.map((apartment) =>  {
                     return (
-                        <div className="datepickersearch--availableapartments-container-card">
+                        <div className="datepickersearch--availableApartments">
                             <li>{apartment.apartmentNumber}
                             </li>
                         </div>

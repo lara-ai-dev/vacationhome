@@ -67,10 +67,10 @@ const Profile = () => {
 
     return (
         <>
-        <div className="personalinformation">
-        <Title title="Personal information"/>
-        <div className="container-personalinformation">
-            <header className="header-personalinformation">
+        <div className="personalInformation">
+        <Title className="personalInformation__title" title="Personal information"/>
+        <div className="personalInformation__container">
+            <header className="personalInformation__header">
                 <h3>
                     <strong>{currentUser.username}</strong> Profile
                 </h3>
@@ -90,9 +90,9 @@ const Profile = () => {
         </div>
         </div>
 
-            <div className="reservationinformation">
-                <Title title="Make reservation"/>
-                <div className="reservation-add">
+            <div className="reservationInformation">
+                <Title className="reservationInformation__title "title="Make reservation"/>
+                <div className="reservationInformation__container">
                 <form  onSubmit={handleSubmit}>
                     <div className="form-control">
                         <label htmlFor="emailAdress">Email address</label>
@@ -121,7 +121,7 @@ const Profile = () => {
 
 
 
-                        <button className="btn btn-primary" type="submit" onSubmit="submit">Reserve</button>
+                        <button className="btn btn--primary" type="submit" onSubmit="submit">Reserve</button>
                     </div>
 
 

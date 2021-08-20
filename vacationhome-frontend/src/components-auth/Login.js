@@ -71,16 +71,16 @@ const Login = (props) => {
     };
 
     return (
-        <div className="col-md-12">
-            <div className="card card-container">
+        <div className="logIn">
+            <div className="logIn__card--container">
 
 
                 <Form onSubmit={handleLogin} ref={form}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
+                    <div className="logIn__form--group">
+                        <label className="logIn__formLabel" htmlFor="username">Username</label>
                         <InputField
                             type="text"
-                            className="form-control"
+                            className="form--control"
                             name="username"
                             value={username}
                             onChange={onChangeUsername}
@@ -88,29 +88,29 @@ const Login = (props) => {
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                    <div className="logIn__form--group">
+                        <label className="logIn__formLabel" htmlFor="password">Password</label>
                         <InputField
                             type="password"
-                            className="form-control"
+                            className="form--control"
                             name="password"
                             value={password}
                             onChange={onChangePassword}
                         />
                     </div>
 
-                    <div className="form-group">
-                        <Button className="btn--registration" disabled={loading}>
+                    <div className="logIn__form--group">
+                        <Button className="btn btn--registration" disabled={loading}>
                             {loading && (
-                                <span className="spinner-border spinner-border-sm"></span>
+                                <span></span>
                             )}
                             <span>Login</span>
                         </Button>
                     </div>
 
                     {message && (
-                        <div className="form-group">
-                            <div className="alert alert-danger" role="alert">
+                        <div className="logIn__form--group">
+                            <div className="alert alert--danger" role="alert">
                                 {message}
                             </div>
                         </div>

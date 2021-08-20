@@ -11,11 +11,11 @@ export default function Room({room}) {
 
     return (
         <article className="room">
-            <div className="img-container">
+            <div className="room__img">
                 <img src={image[0] || defaultImg} alt="single-room"/>
-                <Link to={`/rooms/${slug}`} className="btn-primary room-link">Features</Link>
+                <Link to={`/rooms/${slug}`} className="btn btn--primary room__link">Features</Link>
             </div>
-            <p className="room-info">{name}</p>
+            <p className="room--info">{name}</p>
         </article>
     )
 }

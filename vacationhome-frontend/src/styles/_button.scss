@@ -85,3 +85,14 @@ input[type=submit] .form-control :hover {
 
 
 /* end make reservation*/
+
+/* start alert */
+.alert--danger {
+  background-color: orangered;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 35px;
+  border-radius: 5px;
+}
+
+/* end alert */

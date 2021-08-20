@@ -31,7 +31,7 @@ export default class SingleRoom extends Component {
         if (!room) {
             return <div className="error">
                 <h3>No such room could be found...</h3>
-                <Link to='/rooms' className="btn-primary">Back to rooms</Link>
+                <Link to='/rooms' className="btn btn--primary">Back to rooms</Link>
             </div>
         }
         //destructuring rooms
@@ -46,14 +46,14 @@ export default class SingleRoom extends Component {
                     <Banner title={`${name} room`}>
 
 
-                        <Link to='/register' className='btn-primary'>
+                        <Link to='/register' className='btn btn--primary'>
                             BOOK ROOM
                         </Link>
                     </Banner>
                 </StyledHero>
                 <section className="single-room">
 
-                    <div className="single-room-info">
+                    <div className="single-room--info">
                         <article className="desc">
                             <h3>details</h3>
                             <p>{description}</p>

@@ -8,7 +8,7 @@ export default function Rooms() {
     return (
         <>
        <Hero hero="roomsHero">
-               <Link to="/" className="btn-primary"> 
+               <Link to="/" className="btn btn--primary">
                    RETURN HOME
                </Link>
        </Hero>

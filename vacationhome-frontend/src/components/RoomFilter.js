@@ -46,12 +46,12 @@ export default function RoomFilter({rooms}) {
 
 
     return (
-        <section className="filter-container">
+        <section className="filter__container">
             <Title title="search rooms"/>
-            <form className="filter-form">
+            <form className="filter__form">
 
                 {/*guests*/}
-                <div className="form-group">
+                <div className="filter__form--group">
                     <label htmlFor="capacity">Guests</label>
                     <select
                         name="capacity"
@@ -63,7 +63,7 @@ export default function RoomFilter({rooms}) {
                 </div>
                 {/* end guests*/}
                 {/* room price*/}
-                <div className="form-group">
+                <div className="filter__form--group">
                     <label htmlFor="price">
                         room price ${price}
                     </label>
@@ -72,7 +72,7 @@ export default function RoomFilter({rooms}) {
                 </div>
                 {/* end room price*/}
                 {/* room date picker*/}
-                <div className="form-group">
+                <div className="filter__form--group">
                     <DatepickerSearch
                     id = "availableApartment"
                     value={availableApartment}

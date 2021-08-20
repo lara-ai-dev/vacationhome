@@ -8,33 +8,33 @@
   background: var(--offWhite);
   z-index: 1;
 }
-.nav-header {
+.nav--header {
   display: flex;
   justify-content: space-between;
 }
 
-.nav-header .NH_Logo {
+.nav--header .NH_Logo {
   max-width: 40%;
   height: auto;
 }
-.nav-btn {
+.btn__nav {
   background: transparent;
   border: none;
   cursor: pointer;
   outline: none;
 }
-.nav-icon {
-  font-size: 1.5rem;
-  color: var(--primaryColor);
+.nav__icon {
+  max-width: 10%;
+  height: auto;
 }
-.nav-links {
+.nav__links {
   height: 0;
   overflow: hidden;
   transition: var(--mainTransition);
   list-style-type: none;
 
 }
-.nav-links a {
+.nav__links a {
   display: block;
   text-decoration: none;
   padding: 1rem 0;
@@ -47,29 +47,32 @@
 
 
 }
-.nav-links a:hover {
+.nav__links a:hover {
   color: var(--primaryColor);
   text-decoration: none;
 }
 
 .show-nav {
   height: 270px;
+
 }
+
+
 @media screen and (min-width: 768px) {
-  .nav-btn {
+  .btn__nav {
     display: none;
   }
-  .nav-center {
+  .nav--center {
     max-width: 1170px;
     margin: 0 auto;
     display: flex;
   }
-  .nav-links {
+  .nav__links {
     height: auto;
     display: flex;
     margin-left: 4rem;
   }
-  .nav-links a {
+  .nav__links a {
     margin: 0 1rem;
     padding: 0.5rem 0;
   }

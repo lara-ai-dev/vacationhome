@@ -1,14 +1,14 @@
 /* map information container */
-.container-maps{
+.maps--container {
   overflow: hidden;
   position: relative;
 }
 
-.container-maps Title{
+.maps--container Title{
   padding: 5rem 0;
 }
 
-.container-maps iframe{
+.maps--container iframe{
   left: 0;
   top: 0;
   height: 500px;

@@ -1,9 +1,9 @@
 /* personal information container */
 
-.personalinformation{
+.personalInformation{
   padding: 5rem 0;
 }
-.container-personalinformation{
+.personalInformation__container{
   width: 80%;
   position: center;
   margin-left:auto;
@@ -19,14 +19,14 @@
   border-radius: 10px;
 }
 
-.container-personalinformation p {
+.personalInformation__container p {
   padding-left: 20px;
 }
-.container-personalinformation ul {
+.personalInformation__container ul {
   list-style-type: none;
   padding-left: 20px;
 }
-.header-personalinformation{
+.personalInformation__header{
   padding: 2rem 0;
   text-align: center;
 }

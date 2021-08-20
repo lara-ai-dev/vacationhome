@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 const InputField = ({ value, label, name, placeholder, type, onChange}) => (
 
-    <div className="form-group">
+    <div className="logIn__form--group">
         {label && <label htmlFor="input-field">{label}</label> }
         <input
             type={type}

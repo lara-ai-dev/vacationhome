@@ -31,7 +31,7 @@ export default function Home() {
                 setContent(_content);
             }
         );
-    }, [content]);
+    }, []);
 
     //get reviews from database
     const loadReviews = useCallback(() => {
@@ -42,7 +42,7 @@ export default function Home() {
             .catch(err => {
                 console.log(err);
             })
-    }, [reviews]);
+    }, []);
 
     //get uploaded images from database
     const loadImages = useCallback(() => {
@@ -53,7 +53,7 @@ export default function Home() {
             })
             .catch(err => {
                 console.log(err)})
-    }, [files])
+    }, [])
 
     //the reviews & images are loaded initially
     useEffect(() => {
@@ -66,7 +66,7 @@ export default function Home() {
 
             <Hero>
 
-                    <Link to="/rooms" className="btn-primary ">
+                    <Link to="/rooms" className="btn--primary ">
                         APARTMENT
                     </Link>
 
@@ -74,32 +74,32 @@ export default function Home() {
 
             <FeaturedRooms/>
 
-            <div className="container-maps">
+            <div className="maps--container">
                 <Title title="Location information"/>
                 <iframe
                     width="600" height="450" frameborder="0"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2546.8056335945616!2d7.220488215727086!3d50.33287737945927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47be5ba7d0c092a1%3A0x964f96b779a765ad!2sAn%20der%20Bleiche%2C%2056727%20Mayen%2C%20Duitsland!5e0!3m2!1snl!2snl!4v1612106416181!5m2!1snl!2snl"
                 ></iframe>
             </div>
-            <div className="container-review">
-                <Title title="Reviews"/>
-                <div className="reviewitem-container">
+            <div className="review__container--placed">
+                <Title className="review__title--placed" title="Reviews"/>
+                <div className="review__item--placed">
                     <ul>
                         {reviews.map((item, i) => (
-                            <li key={i} className="reviewitem-container-information">
-                                <p className="reviewitem-username">{item.userName}</p>
-                                <p className="reviewitem-comment">"{item.comment}"</p>
-                                <p className="reviewitem-rating"><StarRatingComponent value={item.rating}/></p>
+                            <li key={i} className="review__item--information">
+                                <p className="review__item--username">{item.userName}</p>
+                                <p className="review__item--comment">"{item.comment}"</p>
+                                <p className="review__item--rating"><StarRatingComponent value={item.rating}/></p>
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <div className="imageitem-container">
+                <div className="review__image">
                     <ul>
                         {files.map((item, i) => (
-                            <li key={i} className="imageitem-container-information">
-                                <p className="imageitem-filename">{item.fileName}</p>
+                            <li key={i} className="review__image--container">
+                                <p className="review__file--name">{item.fileName}</p>
                                 <img src={item.fileName}/>
                             </li>
                         ))}

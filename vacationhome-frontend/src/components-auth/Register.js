@@ -131,8 +131,8 @@ export default class Register extends Component {
 
     render() {
         return (
-            <div className="col-md-12">
-                <div className="card card-container">
+            <div className="register">
+                <div className="register__card--container">
 
                     <Form
                         onSubmit={this.handleRegister}
@@ -142,7 +142,7 @@ export default class Register extends Component {
                     >
                         {!this.state.successful && (
                             <div>
-                                <div className="form-group">
+                                <div className="register__form--group">
                                     <label htmlFor="username">Username</label>
                                     <Input
                                         type="text"
@@ -154,7 +154,7 @@ export default class Register extends Component {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="register__form--group">
                                     <label htmlFor="email">Email</label>
                                     <InputField
                                         type="text"
@@ -166,7 +166,7 @@ export default class Register extends Component {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="register__form--group">
                                     <label htmlFor="password">Password</label>
                                     <Input
                                         type="password"
@@ -178,8 +178,8 @@ export default class Register extends Component {
                                     />
                                 </div>
 
-                                <div className="form-group">
-                                    <Button className="btn-registration">Sign Up</Button>
+                                <div className="register__form--group">
+                                    <Button className="btn btn--registration">Sign Up</Button>
                                 </div>
                             </div>
                         )}

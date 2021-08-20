@@ -133,7 +133,7 @@ export default class BoardUser extends Component {
                         <label className="review__formLabel" for="message">Your Review</label>
                         <div className="review__textContainer">
                             <textarea
-                                class="form-control"
+                                class="form--control"
                                 id="comment"
                                 name="comment"
                                 placeholder="Please enter your review about your stay here..."

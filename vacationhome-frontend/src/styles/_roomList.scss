@@ -1,8 +1,8 @@
 /* roomlist */
-.roomslist {
+.rooms__list {
   padding: 5rem 0;
 }
-.roomslist-center {
+.rooms__list--center {
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -12,12 +12,12 @@
 }
 
 @media screen and (min-width: 776px) {
-  .roomslist-center {
+  .rooms__list--center {
     width: 90vw;
   }
 }
 @media screen and (min-width: 992px) {
-  .roomslist-center {
+  .rooms__list--center {
     width: 95vw;
     max-width: 1170px;
   }

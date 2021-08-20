@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import NH_Logo from '../images/NH-Logo.png';
-import {FaAlignRight} from 'react-icons/fa';
+import hamburgerMenu from '../images/hamburgerMenu.png';
 import {Link} from 'react-router-dom';
 
 import AuthService from "../services/auth.service";
@@ -49,18 +49,18 @@ export default class Navbar extends Component {
 
         return (
             <nav className="navbar">
-                <div className="nav-center">
-                    <div className="nav-header">
+                <div className="nav--center">
+                    <div className="nav--header">
                         <Link to="/">
                             <img src={NH_Logo} alt="vacationhome" className="NH_Logo"/>
                         </Link>
-                        <button type="button" className="nav-btn" onClick={this.handleToggle}>
-                            <FaAlignRight className="nav-icon"/>
+                        <button type="button" className="btn__nav" onClick={this.handleToggle}>
+                            <img src={hamburgerMenu} className="nav__icon"/>
 
                         </button>
                     </div>
 
-                    <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
+                    <ul className={this.state.isOpen ? "nav__links show-nav" : "nav__links"}>
                         <li>
                             <Link to="/">Home</Link>
                         </li>
