@@ -1,10 +1,12 @@
 import React, {useState, useRef} from "react";
 import Form from "react-validation/build/form";
-//import Input from "react-validation/build/input";
+import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import InputField from "../components/InputField";
 import AuthService from "../services/auth.service";
 import Button from "../components/Button";
+import { useHistory } from "react-router-dom";
+
 //verify username and password as a required field
 const required = (value) => {
     if (!value) {
@@ -20,6 +22,7 @@ const required = (value) => {
 
 
 const Login = (props) => {
+    const history = useHistory();
     const form = useRef();
     const checkBtn = useRef();
 
@@ -50,8 +53,11 @@ const Login = (props) => {
         if (checkBtn.current.context._errors.length === 0) {
             AuthService.login(username, password).then(
                 () => {
+                    /*
                     props.history.push("/profile");
-                    window.location.reload();
+                    window.location.reload();*/
+
+                    history.push("/profile");
                 },
                 (error) => {
                     const resMessage =
@@ -76,15 +82,17 @@ const Login = (props) => {
 
 
                 <Form onSubmit={handleLogin} ref={form}>
-                    <div className="logIn__form--group">
+                    <div className="logIn__form--group" >
                         <label className="logIn__formLabel" htmlFor="username">Username</label>
                         <InputField
                             type="text"
-                            className="form--control"
+                            className="form-control"
                             name="username"
+                            id="username"
                             value={username}
                             onChange={onChangeUsername}
                             validations={[required]}
+
                         />
                     </div>
 
@@ -92,10 +100,12 @@ const Login = (props) => {
                         <label className="logIn__formLabel" htmlFor="password">Password</label>
                         <InputField
                             type="password"
-                            className="form--control"
+                            className="form-control"
                             name="password"
+                            id="password"
                             value={password}
                             onChange={onChangePassword}
+
                         />
                     </div>
 
@@ -110,7 +120,7 @@ const Login = (props) => {
 
                     {message && (
                         <div className="logIn__form--group">
-                            <div className="alert alert--danger" role="alert">
+                            <div data-testid="form-message" className="alert alert--danger" role="alert">
                                 {message}
                             </div>
                         </div>
@@ -125,4 +135,5 @@ const Login = (props) => {
 };
 
 export default Login;
+
 
