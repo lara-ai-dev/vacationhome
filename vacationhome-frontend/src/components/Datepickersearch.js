@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {RoomContext} from "../context";
-import Button from "./Button";
+import Button from "./Button/Button";
 
 
 

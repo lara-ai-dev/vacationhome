@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 
 export default function Hero({children,hero}) {
     return (
@@ -11,4 +11,10 @@ export default function Hero({children,hero}) {
 //hero prop will be by default the defaulthero 
 Hero.defaultProps={
     hero: "defaultHero"
+}*/
+export default function Hero({ className = 'defaultHero', ...props }) {
+    return <header data-testid="hero" className={className} {...props} />
 }
+
+
+

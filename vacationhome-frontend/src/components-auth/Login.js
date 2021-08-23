@@ -4,7 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import InputField from "../components/InputField";
 import AuthService from "../services/auth.service";
-import Button from "../components/Button";
+import Button from "../components/Button/Button";
 import { useHistory } from "react-router-dom";
 
 //verify username and password as a required field

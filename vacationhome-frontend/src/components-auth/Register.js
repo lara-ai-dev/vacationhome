@@ -6,7 +6,7 @@ import { isEmail } from "validator";
 import InputField from "../components/InputField";
 
 import AuthService from "../services/auth.service";
-import Button from "../components/Button";
+import Button from "../components/Button/Button";
 
 
 //alert for this field is empty
