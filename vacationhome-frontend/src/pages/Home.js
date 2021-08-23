@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback} from "react";
 import Hero from '../components/Hero';
-import Banner from '../components/Banner';
+import Banner from '../components/Banner/Banner';
 import {Link} from 'react-router-dom';
 import FeaturedRooms from '../components/FeaturedRooms';
 import Title from "../components/Title";
