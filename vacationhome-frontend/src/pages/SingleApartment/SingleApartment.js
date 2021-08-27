@@ -29,13 +29,13 @@ export default function SingleApartment({ match }) {
         <>
             <StyledHero img={images[0] || defaultImg}>
                 <Banner title={`${name} apartment`}>
-                    <Link to="/register" className="btn-primary">
+                    <Link to="/register" className="btn--primary">
                         BOOK APARTMENT
                     </Link>
                 </Banner>
             </StyledHero>
             <section className="single-apartment">
-                <div className="single-apartment-info">
+                <div className="single-apartment--info">
                     <article className="desc">
                         <h3>details</h3>
                         <p>{description}</p>

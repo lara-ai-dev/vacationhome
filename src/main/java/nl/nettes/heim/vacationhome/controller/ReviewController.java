@@ -38,9 +38,34 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping(value = "/review")
+    @PostMapping(value = "/review")
+    public Review addReview(@RequestBody Review newReview){
+        return reviewService.addReview(newReview);
+    }
+
+    @PostMapping(value = "/review/update/{oldCommentId}")
+    public Review updateReviewById(@PathVariable long oldCommentId, @RequestBody Review updatedReview){
+        return reviewService.updateReviewById(oldCommentId, updatedReview);
+    }
+
+    @PostMapping("/review/upload")
+    public ResponseEntity<MessageResponse> uploadFile(@RequestParam("file")MultipartFile file)  {
+        String message = "";
+        try {
+            reviewService.store(file);
+
+            message = "Uploaded the file successfully: " + file.getOriginalFilename();
+            return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse(message));
+        } catch (Exception e) {
+            message = "Could not upload the file: " + file.getOriginalFilename();
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse(message));
+
+        }
+    }
+
+    @GetMapping(value = "/review/all")
     public List<Review> getAllReviews(){
-       return reviewService.getAllReviews();
+        return reviewService.getAllReviews();
     }
 
     @GetMapping(value = "/review/{commentId}")
@@ -49,39 +74,7 @@ public class ReviewController {
         return review.orElse(null);
     }
 
-    @PostMapping(value = "/review")
-    public Review addReview(@RequestBody Review newReview){
-        return reviewService.addReview(newReview);
-    }
-
-
-    @PostMapping(value="/review/{commentId}")
-    public String deleteReviewById(@PathVariable long commentId){
-        return reviewService.deleteReviewById(commentId);
-    }
-
-    @PostMapping(value = "/updateReview/{oldCommentId}")
-    public Review updateReviewById(@PathVariable long oldCommentId, @RequestBody Review updatedReview){
-        return reviewService.updateReviewById(oldCommentId, updatedReview);
-    }
-
-
-    @PostMapping("/upload")
-    public ResponseEntity<MessageResponse> uploadFile(@RequestParam("file")MultipartFile file)  {
-        String message = "";
-        try {
-            reviewService.store(file);
-
-            message = "Uploaded the file successfully: " + file.getOriginalFilename();
-            return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse(message));
-            } catch (Exception e) {
-            message = "Could not upload the file: " + file.getOriginalFilename();
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse(message));
-
-        }
-    }
-
-    @GetMapping("/files")
+    @GetMapping("/review/files")
     public ResponseEntity<List<ReviewResponseFile>> getListFiles(){
         List<ReviewResponseFile> files = reviewService.getAllFiles().map(review -> {
             String fileDownloadUri = ServletUriComponentsBuilder
@@ -100,7 +93,10 @@ public class ReviewController {
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
 
-
+    @DeleteMapping(value="/review/delete/{commentId}")
+    public String deleteReviewById(@PathVariable long commentId){
+        return reviewService.deleteReviewById(commentId);
+    }
 
 
 }

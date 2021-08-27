@@ -16,22 +16,21 @@ public class ApplicationUserController {
     private ApplicationUserRepository applicationUserRepository;
     private ApplicationUserService applicationUserService;
 
-    @GetMapping(value = "api/user/{id}")
-    public ApplicationUser getUserById(@PathVariable long id){
-        Optional<ApplicationUser> user = applicationUserRepository.findById(id);
-        return user.orElse(null);
-    }
-
-    @PostMapping(value = "api/register/")
+    @PostMapping(value = "api/user/register")
     public ApplicationUser register(@RequestBody ApplicationUser newUser){
         return applicationUserRepository.save(newUser);
     }
 
-    @PostMapping(value="api/login")
-    public ApplicationUser signIn(@RequestBody String name, String password){
-        return applicationUserService.signIn(name,password);
+    @GetMapping(value = "api/user/{userId}")
+    public ApplicationUser getUserById(@PathVariable long userId){
+        Optional<ApplicationUser> user = applicationUserRepository.findById(userId);
+        return user.orElse(null);
     }
 
+    @DeleteMapping(value = "api/user/delete/{userId}")
+    public String deleteUserById (@PathVariable long userId) {
+        return applicationUserService.deleteUserById(userId);
+    }
 
 
 

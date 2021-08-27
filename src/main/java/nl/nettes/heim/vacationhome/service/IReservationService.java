@@ -10,14 +10,12 @@ import java.util.List;
 public interface IReservationService  {
     List<Reservation> getAllReservation();
     List<List> checkReservation(Date checkInDate, Date checkOutDate, Apartment apartment);
-    Reservation getReservationById(long id);
+    Reservation getReservationById(long reservationId);
     Reservation addReservation(Reservation newReservation);
-    Reservation updateReservationById(long id, Reservation updatedReservation);
-    String deleteReservationById(long id);
-
-
-
-
+    Reservation updateReservationById(long reservationId, Reservation updatedReservation);
+    String deleteReservationById(long reservationId);
+    List<List> getReservedDates(long apartmentId);
+    //List<List> getReservedDates(List<Date> reservedDates, Apartment apartment);
 }
 
 

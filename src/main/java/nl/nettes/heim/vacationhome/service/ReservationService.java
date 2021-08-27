@@ -21,8 +21,8 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public Reservation getReservationById(long id){
-        return reservationRepository.findById(id).orElseThrow(() -> new ReservationNotFoundException(id));}
+    public Reservation getReservationById(long reservationId){
+        return reservationRepository.findById(reservationId).orElseThrow(() -> new ReservationNotFoundException(reservationId));}
 
     @Override
     public Reservation addReservation(Reservation newReservation){
@@ -30,28 +30,28 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public Reservation updateReservationById(long id, Reservation updatedReservation){
-        return reservationRepository.findById(id).map(
+    public Reservation updateReservationById(long reservationId, Reservation updatedReservation){
+        return reservationRepository.findById(reservationId).map(
                 reservation -> {
                     reservation.setApartmentId(updatedReservation.getApartmentId());
                     reservation.setPrice(updatedReservation.getPrice());
                     return reservationRepository.save(reservation);
                 })
                 .orElseGet(() -> {
-                    updatedReservation.setId(id);
+                    updatedReservation.setId(reservationId);
                     return reservationRepository.save(updatedReservation);
                 });
     }
 
     @Override
-    public String deleteReservationById(long id){
-        Optional<Reservation> reservation = reservationRepository.findById(id);
+    public String deleteReservationById(long reservationId){
+        Optional<Reservation> reservation = reservationRepository.findById(reservationId);
         if(reservation.isPresent()){
-            reservationRepository.deleteById(id);
+            reservationRepository.deleteById(reservationId);
             return "Reservation with id" + reservation.get().getId() + "is deleted";
 
         }
-        throw new ReservationNotFoundException("Hello I dont exist");
+        throw new ReservationNotFoundException("The reservation does not exist");
     }
 
     @Override
@@ -120,7 +120,8 @@ public class ReservationService implements IReservationService {
         return available;
     }
 
-    public List<List> getReservedDates(List<Date> reservedDates, Apartment apartment){
+
+    public List<List> getReservedDates(long apartmentId){
 
         List<Reservation> allReservations = reservationRepository.findAll();
         List<List> reservations = new ArrayList<>();
@@ -128,13 +129,12 @@ public class ReservationService implements IReservationService {
 
             Date startdate = reservation.getCheckInDate();
             Date enddate = reservation.getCheckOutDate();
-            Long apartmentId = reservation.getApartmentId();
-            getDaysBetweenDates(startdate, enddate);
-            reservations.add(reservedDates);
+            if(apartmentId == reservation.getApartmentId()) {
+                List<Date> reservedDates = getDaysBetweenDates(startdate, enddate);
+                reservations.add(reservedDates);
+            }
         }
-
         return reservations;
-
     }
 
 

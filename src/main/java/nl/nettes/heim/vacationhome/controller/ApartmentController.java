@@ -31,7 +31,12 @@ public class ApartmentController {
         this.apartmentService = apartmentService;
     }
 
-    @GetMapping(value = "api/apartment")
+    @PostMapping("api/apartment/add")
+    public Apartment addApartment(@RequestBody Apartment newApartment){
+        return apartmentService.addApartment(newApartment);
+    }
+
+    @GetMapping(value = "api/apartment/all")
     public List<Apartment> getAllApartments() {
         return apartmentService.getAllApartments();
     }
@@ -42,13 +47,18 @@ public class ApartmentController {
         return apartment.orElse(null);
     }
 
-    @PostMapping(value = "api/availableapartments")
-    public List<Apartment> getAvailableApartments(@RequestBody String request)throws JSONException, ParseException {
-        JSONObject jsonObject = new JSONObject(request);
+    @GetMapping(value = "api/apartment/available/{startDate}/{endDate}")
+    public List<Apartment> getAvailableApartments(@PathVariable(value = "startDate") String startDateString , @PathVariable(value = "endDate") String endDateString) throws ParseException {
+        //JSONObject jsonObject = new JSONObject(request);
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date startDate = format.parse(String.valueOf(jsonObject.getString("startDate")));
-        Date endDate = format.parse(String.valueOf(jsonObject.getString("endDate")));
+        Date startDate = format.parse(startDateString);
+        Date endDate = format.parse(endDateString);
         return apartmentService.getAvailableApartments(startDate, endDate);
+    }
+
+    @DeleteMapping (value = "api/apartment/delete/{apartmentId}")
+    public String deleteApartmentById (@PathVariable Long apartmentId) {
+        return apartmentService.deleteApartmentById(apartmentId);
     }
 
 }

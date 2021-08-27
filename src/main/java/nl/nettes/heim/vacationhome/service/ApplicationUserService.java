@@ -1,6 +1,7 @@
 package nl.nettes.heim.vacationhome.service;
 
 import nl.nettes.heim.vacationhome.domain.ApplicationUser;
+import nl.nettes.heim.vacationhome.domain.model.User;
 import nl.nettes.heim.vacationhome.persistance.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 @Service
@@ -33,6 +35,11 @@ public class ApplicationUserService {
     }
 
 
+    public String deleteUserById (long userId) {
+        Optional<ApplicationUser> user = applicationUserRepository.findById(userId);
+        applicationUserRepository.deleteById(userId);
+        return "User with id" + user.get().getUserId() + "is deleted";
+    }
 
 
 }

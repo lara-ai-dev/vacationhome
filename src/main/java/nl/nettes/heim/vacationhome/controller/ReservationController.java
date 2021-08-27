@@ -35,19 +35,18 @@ public class ReservationController {
         return reservationService.getAllReservation();
     }
 
-    @GetMapping(value = "/api/reservation/{id}")
-    public Reservation getReservation(@PathVariable long id){
-        return reservationService.getReservationById(id);
-
+    @GetMapping(value = "/api/reservation/{reservationId}")
+    public Reservation getReservation(@PathVariable long reservationId){
+        return reservationService.getReservationById(reservationId);
     }
 
-
-    @PostMapping(value = "/api/reservation")
+    @PostMapping(value = "/api/reservation/add")
     public Reservation addReservation(@RequestBody Reservation newReservation){
         return reservationService.addReservation(newReservation);
     }
 
-    @PostMapping (value="/api/reservation/")
+    /*
+    @PostMapping (value="/api/reservation")
     public List<List> checkReservation(@RequestBody String request) throws JSONException, ParseException {
         JSONObject jsonObject = new JSONObject(request);
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,21 +56,22 @@ public class ReservationController {
         System.out.println(checkInDate);
         System.out.println(checkOutDate);
         return reservationService.checkReservation(checkInDate, checkOutDate, apartmentService.getByApartmentId(apartmentId));
-    }
-/*
-    @GetMapping(value="/api/reserveddates")
-    public List<List> getReservedDates(Date reservedDates, Apartment apartment){
-        return reservationService.checkReservation(reservedDates, apartment);
     }*/
 
 
-    @DeleteMapping(value = "/api/reservation/{id}")
-    public String deleteReservationById(@PathVariable long id){
-       return reservationService.deleteReservationById(id);
+    @GetMapping(value="/api/reservation/reservedDates/{apartmentId}")
+    public List<List> getReservedDates(@PathVariable long apartmentId){
+        return reservationService.getReservedDates( apartmentId);
     }
 
-    @PutMapping(value = "api/reservation/{id}")
-    public Reservation updateReservationById(@PathVariable long id, @RequestBody Reservation updatedReservation){
-       return reservationService.updateReservationById(id, updatedReservation);
+
+    @DeleteMapping(value = "/api/reservation/delete/{reservationId}")
+    public String deleteReservationById(@PathVariable long reservationId){
+       return reservationService.deleteReservationById(reservationId);
+    }
+
+    @PutMapping(value = "api/reservation/{reservationId}")
+    public Reservation updateReservationById(@PathVariable long reservationId, @RequestBody Reservation updatedReservation){
+       return reservationService.updateReservationById(reservationId, updatedReservation);
     }
 }

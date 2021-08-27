@@ -1,9 +1,9 @@
 /* single room*/
 
-.single-room {
+.single-apartment {
   padding: 5rem 0 0 0;
 }
-.single-room--images {
+.single-apartment--images {
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -11,11 +11,11 @@
   grid-row-gap: 2rem;
   grid-column-gap: 50px;
 }
-.single-room--images img {
+.single-apartment--images img {
   width: 100%;
   display: block;
 }
-.single-room--info {
+.single-apartment--info {
   width: 80vw;
   display: grid;
   grid-template-columns: 1fr;
@@ -43,13 +43,13 @@
 }
 
 @media screen and (min-width: 992px) {
-  .single-room-images,
-  .single-room-info,
+  .single-apartment-images,
+  .single-apartment-info,
   .room-extras {
     width: 95vw;
     max-width: 1170px;
   }
-  .single-room-info {
+  .single-apartment-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 2rem;
