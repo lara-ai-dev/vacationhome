@@ -4,15 +4,18 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {RoomProvider} from './context';
-
+//import {RoomProvider} from './context';
+import { ApartmentProvider } from './context/apartments'
+import { AuthProvider } from './context/auth'
 
 ReactDOM.render(
-  <RoomProvider>
+    <AuthProvider>
+      <ApartmentProvider>
   <Router>
     <App />
   </Router>
-  </RoomProvider>  
+      </ApartmentProvider>
+    </AuthProvider>
   ,document.getElementById('root')
 );
 

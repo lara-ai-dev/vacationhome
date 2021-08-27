@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldMessage renders correctly given props name and errors object with error matching the name 1`] = `
+<div>
+  <div
+    class="alert alert-danger"
+    role="alert"
+  >
+    foo is required
+  </div>
+</div>
+`;
+
+exports[`FieldMessage renders default message if no message in error of errors prop 1`] = `
+<div>
+  <div
+    class="alert alert-danger"
+    role="alert"
+  >
+    Invalid value
+  </div>
+</div>
+`;
+
+exports[`FieldMessage renders nothing when no matching error exist in errors prop 1`] = `<div />`;

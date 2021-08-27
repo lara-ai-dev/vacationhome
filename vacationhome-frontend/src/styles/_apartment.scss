@@ -1,0 +1,51 @@
+/* apartment */
+.apartment {
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  transition: var(--mainTransition);
+  height: 95%;
+  border-radius: 10px;
+}
+.apartment:hover {
+  box-shadow: var(--darkShadow);
+}
+
+.apartment__image {
+  position: relative;
+}
+.apartment__image img {
+  border-radius: 10px;
+  width: 100%;
+  display: block;
+  transition: var(--mainTransition);
+}
+
+.btn--primary apartment__link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0);
+  transition: all 0.3s linear;
+
+}
+.apartment__image:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+.apartment__image:hover img {
+  opacity: 0.3;
+}
+.apartment__image:hover .price-top {
+  opacity: 0;
+}
+.apartment__image:hover .btn--primary apartment__link {
+  transform: translate(-50%, -50%) scale(1);
+  text-decoration: none;
+}
+.apartment--info {
+  border-radius: 10px;
+  text-transform: capitalize;
+  padding: 2rem 0;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: var(--mainSpacing);
+}
+/* end of apartment  */

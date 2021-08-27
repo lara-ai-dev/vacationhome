@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledHero renders correctly 1`] = `
+<div>
+  <header
+    class="sc-bdfBwQ gOMSMc"
+  >
+    <p>
+      hello
+    </p>
+  </header>
+</div>
+`;
