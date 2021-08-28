@@ -4,9 +4,6 @@ package nl.nettes.heim.vacationhome.controller;
 import nl.nettes.heim.vacationhome.domain.Apartment;
 import nl.nettes.heim.vacationhome.persistance.ApartmentRepository;
 import nl.nettes.heim.vacationhome.service.ApartmentService;
-import nl.nettes.heim.vacationhome.service.ReviewService;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,6 +51,11 @@ public class ApartmentController {
         Date startDate = format.parse(startDateString);
         Date endDate = format.parse(endDateString);
         return apartmentService.getAvailableApartments(startDate, endDate);
+    }
+
+    @GetMapping(value="/api/apartment/reservedDates/{apartmentId}")
+    public List<List> getReservedDates(@PathVariable long apartmentId){
+        return apartmentService.getReservedDates( apartmentId);
     }
 
     @DeleteMapping (value = "api/apartment/delete/{apartmentId}")

@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.awt.*;
-import java.util.List;
 
 @Entity
 public class Apartment {
@@ -25,7 +23,7 @@ public class Apartment {
     private String description;
 
 
-    public Long getApartmentId() {
+    public long getApartmentId() {
         return apartmentId;
     }
 
@@ -107,5 +105,11 @@ public class Apartment {
         this.description = description;
     }
 
+    public Apartment(long apartmentId, int apartmentNumber, int availableBeds){
+        this.setApartmentId(apartmentId);
+        this.setApartmentNumber(apartmentNumber);
+        this.setAvailableBeds(availableBeds);
+    }
 
+    public Apartment(){}
 }

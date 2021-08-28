@@ -121,27 +121,17 @@ public class ReservationService implements IReservationService {
     }
 
 
-    public List<List> getReservedDates(long apartmentId){
-
-        List<Reservation> allReservations = reservationRepository.findAll();
-        List<List> reservations = new ArrayList<>();
-        for( Reservation reservation : allReservations){
-
-            Date startdate = reservation.getCheckInDate();
-            Date enddate = reservation.getCheckOutDate();
-            if(apartmentId == reservation.getApartmentId()) {
-                List<Date> reservedDates = getDaysBetweenDates(startdate, enddate);
-                reservations.add(reservedDates);
-            }
-        }
-        return reservations;
-    }
 
 
-    public static List<Date> getDaysBetweenDates(Date startdate, Date enddate)
+
+    public List<Date> getDaysBetweenDates(Date startdate, Date enddate)
     {
         List<Date> dates = new ArrayList<Date>();
         Calendar calendar = new GregorianCalendar();
+        startdate.setHours(0);
+        startdate.setMinutes(0);
+        enddate.setMinutes(0);
+        enddate.setHours(0);
         calendar.setTime(startdate);
 
         while (calendar.getTime().before(enddate))

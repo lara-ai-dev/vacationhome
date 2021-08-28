@@ -59,10 +59,6 @@ public class ReservationController {
     }*/
 
 
-    @GetMapping(value="/api/reservation/reservedDates/{apartmentId}")
-    public List<List> getReservedDates(@PathVariable long apartmentId){
-        return reservationService.getReservedDates( apartmentId);
-    }
 
 
     @DeleteMapping(value = "/api/reservation/delete/{reservationId}")

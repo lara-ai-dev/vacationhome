@@ -3,12 +3,7 @@ package nl.nettes.heim.vacationhome;
 import nl.nettes.heim.vacationhome.controller.ApplicationUserController;
 import nl.nettes.heim.vacationhome.domain.ApplicationUser;
 import nl.nettes.heim.vacationhome.service.ApplicationUserService;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -19,8 +14,9 @@ public class ApplicationUserServiceTest {
     @Autowired
     private ApplicationUserController applicationUserController;
 
+
     @Test
-    void registerTest(){
+    void register(){
         ApplicationUser newUser = new ApplicationUser();
         newUser.setFirstName("TestFirstname").setLastName("TestLastname");
         newUser.setUserName("TestUsername");
@@ -34,12 +30,31 @@ public class ApplicationUserServiceTest {
         //assertEquals(newUser.getUserName(),savedUser.getUserName());
         //assertEquals(newUser,savedUser2);
 
-
     }
 
 
     @Test
-    void signInTest() {
+    void signIn() {
         applicationUserService.signIn("test2","123456");
+    }
+
+    @Test
+    void deleteUserById() {
+        ApplicationUser newUser = new ApplicationUser();
+        newUser.setFirstName("TestFirstname").setLastName("TestLastname");
+        newUser.setUserName("TestUsername");
+        newUser.setPassword("Test123");
+        newUser.setPhoNo(0);
+        newUser.setEmail("test123@gmail.com");
+        newUser.setAddress("hereadress");
+        newUser.setUserId(1L);
+
+        ApplicationUser savedUser = applicationUserController.register(newUser);
+        applicationUserService.deleteUserById(1L);
+
+        //Assert.assertFalse(savedUser.getUserId(1L));
+
+
+
     }
 }

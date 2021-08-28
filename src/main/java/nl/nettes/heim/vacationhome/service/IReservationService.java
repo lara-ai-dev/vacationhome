@@ -14,8 +14,7 @@ public interface IReservationService  {
     Reservation addReservation(Reservation newReservation);
     Reservation updateReservationById(long reservationId, Reservation updatedReservation);
     String deleteReservationById(long reservationId);
-    List<List> getReservedDates(long apartmentId);
-    //List<List> getReservedDates(List<Date> reservedDates, Apartment apartment);
+    //List<List> getReservedDates(long apartmentId);
 }
 
 

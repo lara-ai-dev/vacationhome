@@ -1,7 +1,9 @@
 package nl.nettes.heim.vacationhome.service;
 
 import nl.nettes.heim.vacationhome.domain.Apartment;
+import nl.nettes.heim.vacationhome.domain.Reservation;
 import nl.nettes.heim.vacationhome.persistance.ApartmentRepository;
+import nl.nettes.heim.vacationhome.persistance.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ public class ApartmentService  {
     private ApartmentRepository apartmentRepository;
 
     @Autowired
+    private ReservationRepository reservationRepository;
+
+    @Autowired
     private ReservationService reservationService;
 
     public Apartment addApartment (Apartment newApartment) {
@@ -28,20 +33,26 @@ public class ApartmentService  {
     }
 
 
-    public Apartment getByApartmentId(Long apartmentId){
+    public Apartment getByApartmentId(long apartmentId){
         return apartmentRepository.findById(apartmentId).orElse(null);
     }
 
-    public Apartment findChosenApartment(Apartment apartment){
-        List<Apartment> allApartments = apartmentRepository.findAll();
-        for(Apartment apartments : allApartments){
-            if(apartments.getApartmentId().equals(apartment)){
-                return apartment;
+
+
+    public List<List> getReservedDates(long apartmentId){
+
+        List<Reservation> allReservations = reservationRepository.findAll();
+        List<List> reservations = new ArrayList<>();
+        for( Reservation reservation : allReservations){
+
+            Date startdate = reservation.getCheckInDate();
+            Date enddate = reservation.getCheckOutDate();
+            if(apartmentId == reservation.getApartmentId()) {
+                reservations.add(reservationService.getDaysBetweenDates(startdate, enddate));
             }
         }
-        return null;
+        return reservations;
     }
-
 
     public List<Apartment> getAvailableApartments(Date startDate, Date endDate){
         List<Apartment> allApartments = apartmentRepository.findAll();
