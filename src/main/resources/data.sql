@@ -1,14 +1,15 @@
 /*Add apartment/room information*/
-/*
+
 INSERT INTO "apartment" (apartment_id, apartment_number,available_beds,capacity, description, featured, name,price, slug, type) VALUES(0,'1','4', 4 , 'Super cozy apartment which is located on the ground floor of the classic house. This room is perfect for a family of four', true, 'family-comfort', 60, 'family-comfort','family' );
 INSERT INTO "apartment" (apartment_id, apartment_number,available_beds,capacity, description, featured, name,price, slug, type) VALUES(1,'2','2', 6 , 'This is the room with the best view. It has a nice balcony which is perfect for summer hangouts! ', true, 'friends-comfort', 65, 'friends-comfort','friends');
 INSERT INTO "apartment" (apartment_id, apartment_number,available_beds,capacity, description, featured, name,price, slug, type) VALUES(2,'3','2', 2 , 'Suitable for two people who are searching for something more cozy and luxurious', true, 'couple-comfort', 42, 'couple-comfort','couple');
-*/
+
+
 /*Roles*/
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 
-/*
+/* Test Users
 INSERT INTO users (id, email, password, username) VALUES (1, 'test@gmail.com', 123123, 'admin');
 INSERT INTO user_roles(user_id, role_id) VALUES(1,1);
 INSERT INTO users (id, email, password, username) VALUES (2, 'test1@gmail.com', 23123, 'user');

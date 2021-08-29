@@ -129,6 +129,7 @@ public class ReservationServiceTests {
 
     @Test
     void getReservedDates() throws ParseException{
+
         Apartment apartment = new Apartment();
         apartment.setApartmentId(1L);
         Reservation reservation = new Reservation();
@@ -137,8 +138,17 @@ public class ReservationServiceTests {
         reservation.setApartmentId(1L);
         Reservation savedReservation1= reservationService.addReservation(reservation);
 
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = format.parse("2020-11-01");
+        Date endDate = format.parse("2020-11-21");
 
-        System.out.println(reservation.getCheckInDate());
+        List<Date> reservationDates = new ArrayList<>();
+        for (Date reservedDates : (reservationService.getDaysBetweenDates(startDate, endDate))) {
+            reservationService.addReservation(reservation);
+        }
+
+        Assert.assertFalse(reservationDates.contains(startDate));
+        Assert.assertFalse(reservationDates.contains(endDate));
 
 
     }
