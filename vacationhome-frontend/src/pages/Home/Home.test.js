@@ -48,10 +48,10 @@ const fakeReviews = [
 ]
 
 const server = setupServer(
-    rest.get(`${baseURL}/apartment`, (req, res, ctx) => {
+    rest.get(`${baseURL}/apartment/all`, (req, res, ctx) => {
         return res(ctx.json(fakeAparments))
     }),
-    rest.get(`${baseURL}/review`, (req, res, ctx) => {
+    rest.get(`${baseURL}/review/all`, (req, res, ctx) => {
         return res(ctx.json(fakeReviews))
     }),
     rest.get(`${baseURL}/files`, (req, res, ctx) => {

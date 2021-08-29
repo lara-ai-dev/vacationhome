@@ -1,3 +1,4 @@
+import React from 'react'
 import loadingGif from 'images/gif/loading-animation.gif'
 
 //loading function for when data is loading

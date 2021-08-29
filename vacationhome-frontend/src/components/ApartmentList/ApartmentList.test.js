@@ -3,39 +3,39 @@ import { MemoryRouter } from 'react-router'
 import ApartmentList from './ApartmentList'
 
 describe('ApartmentList', () => {
-    test('display a message if rooms prop is empty or undefined', () => {
-        const { container: container1 } = render(<ApartmentList rooms={[]} />)
+    test('display a message if apartments prop is empty or undefined', () => {
+        const { container: container1 } = render(<ApartmentList apartments={[]} />)
         const { container: container2 } = render(<ApartmentList />)
 
         expect(container1).toHaveTextContent(
-            'unfortunately no rooms match your search parameters'
+            'unfortunately no apartments match your search parameters'
         )
 
         expect(container2).toHaveTextContent(
-            'unfortunately no rooms match your search parameters'
+            'unfortunately no apartments match your search parameters'
         )
     })
 
-    test('display all rooms if revived rooms array', () => {
-        const rooms = [
+    test('display all apartments if revived apartments array', () => {
+        const apartments = [
             {
-                id: 'room1-id',
-                name: 'room1',
-                slug: 'room1-slug',
-                image: ['room1.jpeg', 'room1-a.jpeg'],
+                apartmentId: 'apartment1-id',
+                name: 'apartment1',
+                slug: 'apartment1-slug',
+                images: ['apartment1.jpeg', 'apartment1-a.jpeg'],
             },
             {
-                id: 'room2-id',
-                name: 'room2',
-                slug: 'room2-slug',
-                image: ['room2.jpeg'],
+                apartmentId: 'apartment2-id',
+                name: 'apartment2',
+                slug: 'apartment2-slug',
+                images: ['apartment2.jpeg'],
             },
         ]
 
-        render(<ApartmentList rooms={rooms} />, { wrapper: MemoryRouter })
+        render(<ApartmentList apartments={apartments} />, { wrapper: MemoryRouter })
 
-       // expect(screen.getAllByTestId('room')).toHaveLength(2)
-        expect(screen.getByText('room1')).toBeInTheDocument()
-        expect(screen.getByText('room2')).toBeInTheDocument()
+        expect(screen.getAllByTestId('apartment')).toHaveLength(2)
+        expect(screen.getByText('apartment1')).toBeInTheDocument()
+        expect(screen.getByText('apartment2')).toBeInTheDocument()
     })
 })

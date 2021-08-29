@@ -25,7 +25,7 @@ const fakeReservatoins = [
 ]
 
 const server = setupServer(
-    rest.get(`${baseURL}/reservation`, (req, res, ctx) => {
+    rest.get(`${baseURL}/reservation/all`, (req, res, ctx) => {
         return res(ctx.json(fakeReservatoins))
     }),
     rest.delete(`${baseURL}/reservation/:id`, (req, res, ctx) => {

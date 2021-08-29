@@ -12,7 +12,7 @@ export default function ReviewsSection() {
     useEffect(() => {
         //get reviews from database
         function loadReviews() {
-            API.get(`/review`)
+            API.get(`/review/all`)
                 .then((response) => {
                     setReviews(response.data)
                 })
@@ -21,7 +21,7 @@ export default function ReviewsSection() {
 
         //get uploaded images from database
         function loadImages() {
-            API.get(`/files`)
+            API.get(`/review/files`)
                 .then((response) => {
                     setFiles(response.data)
                 })

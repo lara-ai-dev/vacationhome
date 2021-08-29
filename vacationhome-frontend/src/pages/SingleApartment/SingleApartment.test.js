@@ -34,7 +34,7 @@ const fakeData = [
 ]
 
 const server = setupServer(
-    rest.get(`${baseURL}/apartment`, (req, res, ctx) => {
+    rest.get(`${baseURL}/apartment/all`, (req, res, ctx) => {
         return res(ctx.json(fakeData))
     })
 )

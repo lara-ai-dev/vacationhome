@@ -3,7 +3,7 @@
 exports[`StyledHero renders correctly 1`] = `
 <div>
   <header
-    class="sc-bdfBwQ gOMSMc"
+    class="sc-bdfBwQ bKhFOX"
   >
     <p>
       hello

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import defaultImg from '../../images/apartment-1.jpeg';
 import PropTypes from 'prop-types';
 
 

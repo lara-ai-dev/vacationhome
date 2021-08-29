@@ -28,7 +28,7 @@ function App() {
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/profile" component={Profile} />
 
-                    <Route exact path="/apartments/" component={Apartments} />
+                    <Route exact path="/apartments" component={Apartments} />
                     <Route exact path="/apartments/:slug" component={SingleApartment} />
                     <Route component={Error} />
                 </Switch>

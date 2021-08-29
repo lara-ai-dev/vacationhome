@@ -1,8 +1,8 @@
 import imagesData from 'utils/imagesData'
 
 /**
- * Attach fake images for every apartment record in data coming from API
- *  this shouldn't be needed in future if apartment images are saved with in backend
+ * Temporary solution : attaching fake images for every apartment in data coming from API ->
+ * This was not needed if I was able to save the apartment images in the backend
  */
 export function attachImagesToApartments(data) {
     return data.map((apart) => {

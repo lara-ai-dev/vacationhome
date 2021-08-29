@@ -1,21 +1,13 @@
 package nl.nettes.heim.vacationhome.controller;
 
-import nl.nettes.heim.vacationhome.domain.Apartment;
 import nl.nettes.heim.vacationhome.domain.Reservation;
 import nl.nettes.heim.vacationhome.persistance.ReservationRepository;
 import nl.nettes.heim.vacationhome.service.ApartmentService;
 import nl.nettes.heim.vacationhome.service.IReservationService;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-
-import org.json.JSONObject;
 
 @RestController
 public class ReservationController {
@@ -30,7 +22,7 @@ public class ReservationController {
     private ApartmentService apartmentService;
 
 
-    @GetMapping(value = "/api/reservation")
+    @GetMapping(value = "/api/reservation/all")
     public List<Reservation> getAllReservations(){
         return reservationService.getAllReservation();
     }

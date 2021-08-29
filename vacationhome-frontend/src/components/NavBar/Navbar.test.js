@@ -27,7 +27,7 @@ describe('Navbar', () => {
 
         const menuLinks = [
             { label: /home/i, href: '/' },
-            { label: /rooms/i, href: '/rooms' },
+            { label: /apartments/i, href: '/apartments' },
             { label: /login/i, href: '/login' },
             { label: /sign up/i, href: '/register' },
         ]
@@ -61,7 +61,7 @@ describe('Navbar', () => {
 
         const menuLinks = [
             { label: /home/i, href: '/' },
-            { label: /rooms/i, href: '/rooms' },
+            { label: /apartments/i, href: '/apartments' },
             { label: /review/i, href: '/user' },
             { label: fakeUser.username, href: '/profile' },
             { label: /logout/i, href: '/login' },
@@ -96,7 +96,7 @@ describe('Navbar', () => {
 
         const menuLinks = [
             { label: /home/i, href: '/' },
-            { label: /rooms/i, href: '/rooms' },
+            { label: /apartments/i, href: '/apartments' },
             { label: /reservations/i, href: '/admin' },
             { label: fakeUser.username, href: '/profile' },
             { label: /logout/i, href: '/login' },

@@ -1,3 +1,4 @@
+import React from 'react';
 import Apartment from 'components/Apartment/Apartment'
 
 export default function ApartmentList({ apartments }) {
@@ -26,32 +27,3 @@ export default function ApartmentList({ apartments }) {
         </section>
     )
 }
-
-
-
-/*import React from 'react';
-import Apartment from '../Apartment/Apartment'
-
-export default function ApartmentList({rooms}) {
-
-
-    if(!rooms?.length || rooms.length === 0){
-        return(
-            <div className="empty-search">
-                <h3>unfortunately no rooms match your search parameters</h3>
-            </div>
-        )
-    }
-
-    return (
-        <section className="rooms__list">
-            <div className="rooms__list--center">
-                {rooms.map(({ id, name, slug, image }) => {
-                    return <Apartment key={id} name={name} slug={slug} image={image[0]} />
-                })}
-            </div>
-        </section>
-    )
-
-
-}*/

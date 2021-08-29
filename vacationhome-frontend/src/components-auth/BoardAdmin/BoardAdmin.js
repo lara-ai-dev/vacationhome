@@ -38,7 +38,7 @@ export default class BoardAdmin extends Component {
         );
 
         //get all reservations
-        axios.get(`/reservation`)
+        axios.get(`/reservation/all`)
             .then(res => {
 
                 const reservations = res.data;

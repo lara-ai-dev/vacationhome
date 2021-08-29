@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import defaultImg from '../../images/apartment-1.jpeg';
 

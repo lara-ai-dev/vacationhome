@@ -1,5 +1,5 @@
+import React from 'react'
 import { useEffect, useMemo, useState } from 'react'
-
 import ApartmentsFilter from 'components/ApartmentFilter/ApartmentFilter'
 import ApartmentsList from 'components/ApartmentList/ApartmentList'
 import Loading from 'components/Loading/Loading'
@@ -55,28 +55,3 @@ export default function FilteredApartmentsContainer() {
     )
 }
 
-
-
-/*import React from 'react'
-import ApartmentFilter from '../ApartmentFilter/ApartmentFilter';
-import ApartmentList from '../ApartmentList/ApartmentList';
-import { withRoomConsumer } from '../../context';
-import Loading from '../Loading/Loading';
-
-
-function FilteredApartmentsContainer({ context }) {
-    const { loading, sortedRooms, rooms } = context;
-    if (loading) {
-        return <Loading />;
-    }
-    return (
-        <>
-            <ApartmentFilter rooms={rooms} />
-            <ApartmentList rooms={sortedRooms} />
-        </>
-        );
-
-}
-
-
-export default withRoomConsumer(FilteredApartmentsContainer)*/
