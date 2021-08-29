@@ -70,28 +70,36 @@ public class ReservationServiceTests {
     @Test
     void addReservation () throws ParseException{
 
-    }
-
-    @Test
-    void updateReservationById () throws ParseException{
-
         Reservation reservation = new Reservation();
         reservation.setReservationId(1);
         reservation.setCheckInDate(2020,11,1,21,12);
         reservation.setCheckOutDate(2020,11,21,21,12);
         reservationService.addReservation(reservation);
 
-        //reservationService.updateReservationById(1, reservation.setCheckInDate(2020,12,1,21,12), reservation.setCheckOutDate(2020,12,21,21,12)));
-        //Reservation updatedReservation =  reservationService.getReservationById(1);
+        List<Long> reservationIds = new ArrayList<>();
+        for (Reservation reservationList : (reservationService.getAllReservation())) {
+            reservationIds.add(reservationList.getId());
+        }
 
-        //Assertions.assertTrue(updatedReservation, reservation.getCheckInDate(2020-12-1), reservation.getCheckOutDate(2020-12-21));
-
-
+        Assertions.assertFalse(reservationIds.contains(1));
     }
+
 
     @Test
     void deleteReservationById () throws ParseException{
 
+        Reservation reservation = new Reservation();
+        reservation.setReservationId(1);
+        reservation.setBillingAddress("testBillingAddress");
+        reservation.setCheckInDate(2020,11,1,21,12);
+        reservation.setCheckOutDate(2020,11,21,21,12);
+        reservationService.addReservation(reservation);
+
+
+        Assert.assertTrue(reservation.getReservationId().equals(1));
+        reservationService.deleteReservationById(1);
+
+        Assert.assertTrue(reservation.getReservationId().equals(1));
     }
 
     @Test
@@ -109,6 +117,13 @@ public class ReservationServiceTests {
         Date startDate = format.parse("2020-11-02");
         Date endDate = format.parse("2020-11-05");
 
+
+        List<Long> reservationDates = new ArrayList<>();
+        for (Date reservedDates : (reservationService.getDaysBetweenDates(startDate, endDate))) {
+            reservationService.checkReservation(startDate, endDate, apartment);
+        }
+
+        Assert.assertFalse(reservationDates.contains(startDate));
 
     }
 
@@ -128,11 +143,7 @@ public class ReservationServiceTests {
 
     }
 
-    @Test
-    void getDaysBetweenDates () throws ParseException {
 
-        //Reservat
-    }
  }
 
 
